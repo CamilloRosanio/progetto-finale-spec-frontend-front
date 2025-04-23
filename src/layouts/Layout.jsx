@@ -23,7 +23,7 @@ export default function Layout() {
             <Header />
 
             <main>
-                <div className='container debug'>
+                <div className='container'>
                     <Outlet />
                 </div>
             </main>

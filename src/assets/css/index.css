@@ -26,6 +26,36 @@ a:-webkit-any-link {
 
 
 /*******************************************************************
+# UTILITY
+*******************************************************************/
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.container {
+  width: 80vw;
+  max-width: 1200px;
+  padding: 2rem;
+  margin: auto;
+
+  /* DEBUG */
+  background-color: rgb(238, 238, 238);
+}
+
+/* .hidden {
+  display: none;
+} */
+
+
+
+/*******************************************************************
 # DEBUG
 *******************************************************************/
 
