@@ -152,6 +152,10 @@ main {
   background-color: var(--color-6);
 }
 
+.resultsCounter {
+  margin-bottom: var(--space-2);
+}
+
 
 
 /*******************************************************************
@@ -173,7 +177,7 @@ main {
   border-top-right-radius: 0;
 }
 
-.productInfo {
+.infoSection {
   display: flex;
   gap: var(--space-1);
   align-items: center;
@@ -185,12 +189,12 @@ main {
   text-align: center;
   padding: 0.15rem 0.5rem;
   min-width: 120px;
-  background-color: var(--color-5);
+  background-color: var(--color-2);
   border-radius: 35px;
 }
 
 .pBrand {
-  color: var(--color-2);
+  color: var(--color-5);
 }
 
 .notAvailable {

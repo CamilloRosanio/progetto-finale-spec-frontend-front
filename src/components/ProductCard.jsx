@@ -1,6 +1,9 @@
-// COMPONENT EXPORT
-export default function ProductCard({
-    id,
+// UTILITY
+import { memo } from "react";
+
+
+// COMPONENT STRUCTURE
+function ProductCard({
     category,
     title,
     brand,
@@ -8,17 +11,21 @@ export default function ProductCard({
     status,
     price,
 }) {
+
+    // debug
+    // console.log(`CARD Rendering: ${title}`);
+
     return <>
 
         <div className='card'>
-            <div className="productInfo">
+            <div className="infoSection">
                 <h4 className="pCategory">{category}</h4>
                 <h3>{title}</h3>
                 {brand && <p className="pBrand">by {brand}</p>}
                 {quantity && <p>in stock: <strong>{quantity}</strong></p>}
             </div>
 
-            <div className="productInfo">
+            <div className="infoSection">
                 {status === 'not available' ? <p className="notAvailable">{status} ●</p> : <p>{status} ●</p>}
                 {price && <p>{price.toFixed(2)} €</p>}
             </div>
@@ -26,3 +33,7 @@ export default function ProductCard({
 
     </>
 }
+
+
+// EXPORT MEMO COMPONENT
+export default memo(ProductCard);

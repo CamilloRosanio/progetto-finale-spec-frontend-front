@@ -35,11 +35,12 @@ export default function HomePage() {
             />
         </div>
 
-        <div className="cardList">
+        <div className="resultsCounter">
+            <h2>✱ {filteredProducts.length} results found</h2>
+        </div>
 
-            {!filteredProducts.length ?
-                <h3>No products found</h3>
-                :
+        <div className="cardList">
+            {
                 filteredProducts.map((p, index) => <ProductCard
                     key={p.id}
                     category={p.category}
@@ -51,7 +52,6 @@ export default function HomePage() {
                 />)
             }
         </div>
-
 
     </>
 }
