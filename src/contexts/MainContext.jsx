@@ -24,7 +24,7 @@ export const MainContextProvider = ({ children }) => {
         fetchProducts(VITE_API_URL, `/products`)
             .then(products => {
                 // debug
-                console.log('PRODUCT EXAMPLE: ', products[0]);
+                // console.log('PRODUCT EXAMPLE: ', products[0]);
                 setProducts(products);
             })
             .catch(error => console.error(error))

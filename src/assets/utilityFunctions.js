@@ -27,4 +27,4 @@ function debounce(callback, delay) {
 
 
 // EXPORT
-export { fetchJson, fetchProducts, debounce };
+export { fetchJson, fetchProducts, debounce, };

@@ -41,14 +41,15 @@ a:-webkit-any-link {
   --space-4: 4rem;
 
   /* PALETTE */
-  --color-1: rgb(36, 36, 36);
+  --color-1: rgb(48, 48, 48);
   --color-2: rgb(97, 97, 97);
   --color-3: rgb(151, 151, 151);
   --color-4: rgb(255, 255, 255);
-  --color-5: rgb(0, 47, 255);
+  --color-5: rgb(0, 35, 189);
   --color-6: rgb(211, 0, 0);
 
-  --bg-dark: rgb(36, 36, 36);
+  --bg-dark: rgb(48, 48, 48);
+  ;
   --bg-light-gray: rgb(236, 236, 236);
 
   --color-hover: rgb(133, 255, 108);
@@ -91,11 +92,18 @@ main {
 # NAVBAR
 *******************************************************************/
 
-.navbar {
-  padding: var(--space-2);
+header {
+  display: flex;
+  justify-content: center;
   background-color: var(--bg-dark);
+}
+
+.navbar {
   display: flex;
   justify-content: space-between;
+  padding: var(--space-2);
+  width: 80vw;
+  max-width: 1200px;
 }
 
 .navbarLinks {
@@ -155,10 +163,6 @@ main {
   background-color: var(--color-6);
 }
 
-.resultsCounter {
-  margin-bottom: var(--space-2);
-}
-
 .selectContainer {
   display: flex;
   justify-content: space-between;
@@ -170,6 +174,8 @@ main {
 }
 
 .select {
+  cursor: pointer;
+  flex-grow: 1;
   appearance: none;
   font-size: 1rem;
   border: none;
@@ -179,6 +185,36 @@ main {
   outline: none;
   border: none;
 }
+
+
+
+/*******************************************************************
+# SORT SECTION
+*******************************************************************/
+
+.sortSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.sortButtonsContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1)
+}
+
+.sortButton {
+  cursor: pointer;
+  text-align: center;
+  color: var(--color-4);
+  width: 100px;
+  padding: .3rem 1rem;
+  border-radius: 35px;
+  background-color: var(--color-5);
+}
+
 
 
 /*******************************************************************
@@ -237,7 +273,7 @@ footer {
   padding: var(--space-1);
   background-color: var(--bg-dark);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 

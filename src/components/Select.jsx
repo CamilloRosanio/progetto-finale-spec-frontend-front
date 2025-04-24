@@ -4,13 +4,13 @@ export default function Select({ placeholder, options, value, setValue }) {
 
         <div className="selectContainer">
 
+            {/* OPTIONS */}
             <select
                 onChange={e => setValue(e.target.value)}
-                defaultValue=""
                 value={value}
                 className="select"
             >
-                <option value='' disabled>{placeholder}</option>
+                <option value=''>{placeholder}</option>
                 {options.map((option, index) => (
                     <option
                         key={index}
@@ -21,6 +21,7 @@ export default function Select({ placeholder, options, value, setValue }) {
                 ))}
             </select>
 
+            {/* RESET BUTTON */}
             <div onClick={() => { setValue('') }} className="roundButton">✖</div>
 
         </div>
