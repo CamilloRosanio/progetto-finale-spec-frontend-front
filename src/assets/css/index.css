@@ -43,10 +43,13 @@ a:-webkit-any-link {
   /* PALETTE */
   --color-1: rgb(36, 36, 36);
   --color-2: rgb(97, 97, 97);
-  --color-3: rgb(255, 255, 255);
-  --color-4: rgb(0, 47, 255);
+  --color-3: rgb(151, 151, 151);
+  --color-4: rgb(255, 255, 255);
+  --color-5: rgb(0, 47, 255);
+  --color-6: rgb(211, 0, 0);
 
   --bg-dark: rgb(36, 36, 36);
+  --bg-light-gray: rgb(236, 236, 236);
 
   --color-hover: rgb(133, 255, 108);
 }
@@ -85,7 +88,29 @@ main {
 
 
 /*******************************************************************
-# FILTERS
+# NAVBAR
+*******************************************************************/
+
+.navbar {
+  padding: var(--space-2);
+  background-color: var(--bg-dark);
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbarLinks {
+  display: flex;
+  gap: var(--space-1)
+}
+
+.navbar .navlink {
+  color: var(--color-4);
+}
+
+
+
+/*******************************************************************
+# SEARCH FILTERS
 *******************************************************************/
 
 .filtersContainer {
@@ -102,7 +127,7 @@ main {
   padding: var(--space-05) 1.3rem;
   padding-right: var(--space-05);
   border-radius: 35px;
-  border: 2px solid var(--color-4);
+  border: 2px solid var(--color-5);
 }
 
 .searchbarInput {
@@ -124,29 +149,52 @@ main {
 .searchbarButton:hover {
   cursor: pointer;
   color: white;
-  background-color: rgb(211, 0, 0);
+  background-color: var(--color-6);
 }
 
 
 
 /*******************************************************************
-# NAVBAR
+# PRODUCT CARDS
 *******************************************************************/
 
-.navbar {
-  padding: var(--space-2);
-  background-color: var(--bg-dark);
+.cardList {
   display: flex;
-  justify-content: space-between;
-}
-
-.navbarLinks {
-  display: flex;
+  flex-direction: column;
   gap: var(--space-1)
 }
 
-.navbar .navlink {
-  color: var(--color-3);
+.card {
+  background-color: var(--bg-light-gray);
+  padding: var(--space-1);
+  display: flex;
+  justify-content: space-between;
+  border-radius: 35px;
+  border-top-right-radius: 0;
+}
+
+.productInfo {
+  display: flex;
+  gap: var(--space-1);
+  align-items: center;
+}
+
+.pCategory {
+  color: var(--color-4);
+  font-weight: normal;
+  text-align: center;
+  padding: 0.15rem 0.5rem;
+  min-width: 120px;
+  background-color: var(--color-5);
+  border-radius: 35px;
+}
+
+.pBrand {
+  color: var(--color-2);
+}
+
+.notAvailable {
+  color: var(--color-6);
 }
 
 
@@ -157,6 +205,7 @@ main {
 
 footer {
   color: var(--color-3);
+  font-size: 0.8rem;
   padding: var(--space-1);
   background-color: var(--bg-dark);
   display: flex;

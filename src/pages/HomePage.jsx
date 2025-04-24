@@ -35,15 +35,23 @@ export default function HomePage() {
             />
         </div>
 
-        <ProductCard
-            prop1='tets'
-        />
+        <div className="cardList">
 
-        {!filteredProducts.length ?
-            <h3>No products found</h3>
-            :
-            filteredProducts.map((p, index) => <p key={index}>{p.title}</p>)
-        }
+            {!filteredProducts.length ?
+                <h3>No products found</h3>
+                :
+                filteredProducts.map((p, index) => <ProductCard
+                    key={p.id}
+                    category={p.category}
+                    title={p.title}
+                    brand={p.brand}
+                    quantity={p.quantity}
+                    price={p.price}
+                    status={p.status}
+                />)
+            }
+        </div>
+
 
     </>
 }

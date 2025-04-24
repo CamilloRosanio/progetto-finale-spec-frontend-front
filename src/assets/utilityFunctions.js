@@ -8,8 +8,6 @@ async function fetchProducts(urlRoot, urlAdd) {
     let products;
     try {
         products = await fetchJson(urlRoot, urlAdd);
-        // debug
-        // console.log(`fetchProducts: ${products}`);
     } catch (error) {
         throw new Error('PRODUCTS fetch failed.')
     }
