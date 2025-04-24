@@ -5,9 +5,9 @@ import Navbar from "./Navbar"
 // COMPONENT EXPORT
 export default function Header() {
     return <>
-        <div className="debug">
+        <header>
             <Navbar />
-        </div>
+        </header>
 
     </>
 }

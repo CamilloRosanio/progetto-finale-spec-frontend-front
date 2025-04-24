@@ -1,5 +1,10 @@
 // UTILITY
 import { createContext, useContext, useState, useEffect } from 'react';
+import { fetchProducts } from '../assets/utilityFunctions';
+
+
+// ENV
+const { VITE_API_URL } = import.meta.env;
 
 
 // CREATE CONTEXT
@@ -10,15 +15,24 @@ const MainContext = createContext();
 export const MainContextProvider = ({ children }) => {
 
     // USE-STATE DATA
-    const [data, setData] = useState('');
+    const [products, setProducts] = useState([]);
 
     // INIT USE-EFFECT
     useEffect(() => {
-        setData('data');
+
+        // FETCH PRODUCTS
+        fetchProducts(VITE_API_URL, `/products`)
+            .then(products => {
+                // debug
+                // console.log('PRODUCTS: ', products);
+                setProducts(products);
+            })
+            .catch(error => console.error(error))
+
     }, []);
 
     return <>
-        <MainContext.Provider value={data}>{children}</MainContext.Provider>
+        <MainContext.Provider value={{ products, setProducts }}>{children}</MainContext.Provider>
     </>
 }
 

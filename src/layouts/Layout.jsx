@@ -2,10 +2,6 @@
 import { Outlet } from 'react-router-dom';
 
 
-// CONTEXT
-import { useMainContext } from "../contexts/MainContext";
-
-
 // COMPONENTS
 import Header from './partials/Header';
 import Footer from './partials/Footer';
@@ -13,9 +9,6 @@ import Footer from './partials/Footer';
 
 // COMPONENT EXPORT
 export default function Layout() {
-
-    // IMPORT CONTEXT DATA
-    const MainContext = useMainContext();
 
     return <>
 

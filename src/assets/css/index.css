@@ -12,22 +12,54 @@
   text-decoration: none;
 
   /* FONT */
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto condensed", sans-serif;
 }
 
-/* button {
+button {
+  all: unset;
+}
+
+input {
   all: unset;
 }
 
 a:-webkit-any-link {
   color: var(--color-primary);
-} */
+}
+
+
+
+/*******************************************************************
+# CUSTOM PROPERTIES
+*******************************************************************/
+
+:root {
+  /* SPACE UNIT */
+  --space-05: 0.5rem;
+  --space-1: 1rem;
+  --space-2: 2rem;
+  --space-4: 4rem;
+
+  /* PALETTE */
+  --color-1: rgb(36, 36, 36);
+  --color-2: rgb(97, 97, 97);
+  --color-3: rgb(255, 255, 255);
+  --color-4: rgb(0, 47, 255);
+
+  --bg-dark: rgb(36, 36, 36);
+
+  --color-hover: rgb(133, 255, 108);
+}
 
 
 
 /*******************************************************************
 # UTILITY
 *******************************************************************/
+
+body {
+  color: var(--color-1);
+}
 
 .wrapper {
   display: flex;
@@ -42,16 +74,88 @@ main {
 .container {
   width: 80vw;
   max-width: 1200px;
-  padding: 2rem;
+  padding: var(--space-2);
   margin: auto;
-
-  /* DEBUG */
-  background-color: rgb(238, 238, 238);
 }
 
-/* .hidden {
+.hidden {
   display: none;
-} */
+}
+
+
+
+/*******************************************************************
+# FILTERS
+*******************************************************************/
+
+.filtersContainer {
+  margin-bottom: var(--space-2);
+  display: flex;
+  justify-content: start;
+  gap: var(--space-2)
+}
+
+.searchbar {
+  display: flex;
+  padding: var(--space-05) var(--space-1);
+  padding-right: var(--space-05);
+  border-radius: 35px;
+  border: 2px solid var(--color-4);
+}
+
+.searchbarButton {
+  color: var(--color-2);
+  font-weight: bold;
+  border-radius: 100%;
+  background-color: rgb(214, 214, 214);
+  height: 2rem;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  padding-top: 4px;
+}
+
+.searchbarButton:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(211, 0, 0);
+}
+
+
+
+/*******************************************************************
+# NAVBAR
+*******************************************************************/
+
+.navbar {
+  padding: var(--space-2);
+  background-color: var(--bg-dark);
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbarLinks {
+  display: flex;
+  gap: var(--space-1)
+}
+
+.navbar .navlink {
+  color: var(--color-3);
+}
+
+
+
+/*******************************************************************
+# FOOTER
+*******************************************************************/
+
+footer {
+  color: var(--color-3);
+  padding: var(--space-1);
+  background-color: var(--bg-dark);
+  display: flex;
+  justify-content: space-between;
+}
 
 
 

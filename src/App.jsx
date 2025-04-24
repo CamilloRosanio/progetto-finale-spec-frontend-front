@@ -2,11 +2,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
-// CONTEXTS
+// CONTEXT PROVIDERS
 import { MainContextProvider } from "./contexts/MainContext";
 
 
-// LAYOUT
+// LAYOUTS
 import Layout from './layouts/Layout';
 
 
@@ -35,7 +35,7 @@ function App() {
               {/* PAGES */}
               <Route index Component={HomePage}></Route>
               <Route path='/favorites' Component={FavoritesPage}></Route>
-              <Route path='/details' Component={ItemDetailsPage}></Route>
+              <Route path='/details/:id' Component={ItemDetailsPage}></Route>
 
               {/* NOT FOUND PAGE */}
               <Route path='*' Component={NotFoundPage}></Route>
