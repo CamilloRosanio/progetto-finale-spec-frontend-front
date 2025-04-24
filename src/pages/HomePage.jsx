@@ -1,5 +1,5 @@
 // CONTEXTS
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { useMainContext } from "../contexts/MainContext";
 
 
@@ -27,11 +27,18 @@ export default function HomePage() {
 
     return <>
 
-        <div className="filtersContainer">
+        {/* <div className="filtersContainer">
             <Searchbar
                 placeholder='Search by name..'
                 value={query}
                 setValue={setQuery}
+            />
+        </div> */}
+
+        <div className="filtersContainer">
+            <Searchbar
+                placeholder="Search by name.."
+                onDebouncedChange={setQuery}
             />
         </div>
 

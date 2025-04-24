@@ -27,7 +27,7 @@ function ProductCard({
 
             <div className="infoSection">
                 {status === 'not available' ? <p className="notAvailable">{status} ●</p> : <p>{status} ●</p>}
-                {price && <p>{price.toFixed(2)} €</p>}
+                {price && <p><strong>{price.toFixed(2)} €</strong></p>}
             </div>
         </div >
 
