@@ -23,12 +23,25 @@ export default function HomePage() {
     const [sortOrder, setSortOrder] = useState(1);
 
     // USE-MEMO
-    const filteredProducts = useMemo(() => {
-        return products.filter(p => {
+    const productsList = useMemo(() => {
+        const filteredProducts = products.filter(p => {
             const isInTitle = p.title.toLowerCase().includes(query.toLowerCase());
             const isInCategory = category ? p.category === category : true;
             return isInTitle && isInCategory;
         });
+
+        const sortedProducts = [...filteredProducts].sort((a, b) => {
+            const aKey = a[sortBy];
+            const bKey = b[sortBy];
+
+            if (typeof aKey === 'number' && typeof bKey === 'number') {
+                return (aKey - bKey) * sortOrder;
+            } else {
+                return aKey.toString().localeCompare(bKey.toString()) * sortOrder;
+            }
+        });
+
+        return sortedProducts;
     }, [products, query, category, sortBy, sortOrder]);
 
     // DATA
@@ -41,7 +54,7 @@ export default function HomePage() {
 
     // SORT BY
     const sortFields = ['title', 'category', 'price'];
-    const sortArrow = sortOrder === 1 ? '▲' : '▼';
+    const sortArrow = sortOrder === 1 ? '▼' : '▲';
 
     const handleSort = (field) => {
         if (sortBy === field) {
@@ -51,7 +64,8 @@ export default function HomePage() {
             setSortOrder(1);
         }
 
-        console.log(`STATE (sortBy: ${field} | sortOrder: ${sortOrder})`);
+        // debug
+        // console.log(`STATE (sortBy: ${field} | sortOrder: ${sortOrder})`);
     }
 
     return <>
@@ -76,7 +90,7 @@ export default function HomePage() {
 
         {/*  LIST */}
         <div className="sortSection">
-            <h2>✱ {filteredProducts.length} results found</h2>
+            <h2>✱ {productsList.length} results found</h2>
 
             <div className="sortButtonsContainer">
 
@@ -95,7 +109,7 @@ export default function HomePage() {
 
         <div className="cardList">
             {
-                filteredProducts.map(p => <ProductCard
+                productsList.map(p => <ProductCard
                     key={p.id}
                     category={p.category}
                     title={p.title}
