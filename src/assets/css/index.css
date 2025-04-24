@@ -97,10 +97,16 @@ main {
 
 .searchbar {
   display: flex;
-  padding: var(--space-05) var(--space-1);
+  justify-content: space-between;
+  min-width: 300px;
+  padding: var(--space-05) 1.3rem;
   padding-right: var(--space-05);
   border-radius: 35px;
   border: 2px solid var(--color-4);
+}
+
+.searchbarInput {
+  min-width: 85%;
 }
 
 .searchbarButton {
