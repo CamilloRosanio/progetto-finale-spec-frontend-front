@@ -1,10 +1,11 @@
 // CONTEXTS
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo } from "react";
 import { useMainContext } from "../contexts/MainContext";
 
 
 // COMPONENTS
 import Searchbar from "../components/Searchbar";
+import Select from "../components/Select";
 import ProductCard from "../components/ProductCard";
 
 
@@ -16,32 +17,43 @@ export default function HomePage() {
 
     // USE-STATE
     const [query, setQuery] = useState('');
+    const [category, setCategory] = useState('');
 
     // USE-MEMO
     const filteredProducts = useMemo(() => {
         return products.filter(p => {
             const isInTitle = p.title.toLowerCase().includes(query.toLowerCase());
-            return isInTitle;
+            const isInCategory = category ? p.category === category : true;
+            return isInTitle && isInCategory;
         });
-    }, [products, query]);
+    }, [products, query, category]);
+
+    // DATA
+    const categories = products.reduce((acc, p) => {
+        if (!acc.includes(p.category)) {
+            acc.push(p.category);
+        }
+        return acc;
+    }, []);
 
     return <>
 
-        {/* SEARCHBAR V1 */}
-        {/* <div className="filtersContainer">
-            <Searchbar
-                placeholder='Search by name..'
-                value={query}
-                setValue={setQuery}
-            />
-        </div> */}
-
         <div className="filtersContainer">
+            {/* SEARCHBAR */}
             <Searchbar
                 placeholder="Search by name.."
                 onDebouncedChange={setQuery}
                 reset={setQuery}
             />
+
+            {/* SELECT */}
+            <Select
+                placeholder='Filter by category..'
+                options={categories}
+                value={category}
+                setValue={setCategory}
+            />
+
         </div>
 
         <div className="resultsCounter">
@@ -50,7 +62,7 @@ export default function HomePage() {
 
         <div className="cardList">
             {
-                filteredProducts.map((p, index) => <ProductCard
+                filteredProducts.map(p => <ProductCard
                     key={p.id}
                     category={p.category}
                     title={p.title}

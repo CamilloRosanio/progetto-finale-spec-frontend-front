@@ -3,32 +3,6 @@ import { useEffect, useState, useCallback } from 'react';
 import { debounce } from '../assets/utilityFunctions';
 
 
-// SEARCHBAR V1
-// export default function Searchbar({ placeholder, value, setValue }) {
-
-//     // USE-STATE
-//     const [localValue, setLocalValue] = useState(value);
-
-//     return <>
-//         <div className="searchbar">
-//             <input
-//                 type="text"
-//                 placeholder={placeholder}
-//                 className="searchbarInput"
-//                 value={value}
-//                 onChange={e => setValue(e.target.value)}
-//             />
-//             <div
-//                 onClick={() => setValue("")}
-//                 className="searchbarButton"
-//             >
-//                 ✖
-//             </div>
-//         </div>
-//     </>
-// }
-
-
 // COMPONENT EXPORT
 
 export default function Searchbar({ placeholder, onDebouncedChange, reset }) {
@@ -60,15 +34,7 @@ export default function Searchbar({ placeholder, onDebouncedChange, reset }) {
             />
 
             {/* RESET BUTTON */}
-            <div
-                onClick={() => {
-                    reset('');
-                    setLocalValue('');
-                }}
-                className="searchbarButton"
-            >
-                ✖
-            </div>
+            <div onClick={() => { reset(''); setLocalValue(''); }} className="roundButton">✖</div>
         </div>
     );
 }
