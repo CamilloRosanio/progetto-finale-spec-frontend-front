@@ -112,6 +112,10 @@ h1 {
   padding-bottom: 2px;
 }
 
+.warning {
+  color: var(--color-6);
+}
+
 
 
 /*******************************************************************
@@ -215,6 +219,54 @@ header {
 
 .button.off {
   background-color: var(--color-3);
+}
+
+
+
+/*******************************************************************
+# COMPARE SECTION
+*******************************************************************/
+
+.compareSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border: 3px solid var(--color-5);
+  border-radius: 15px;
+}
+
+.comparedCardsContainer {
+  display: flex;
+  justify-content: start;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.comparedCard {
+  flex-grow: 1;
+  min-width: 30%;
+  max-width: 31%;
+  background-color: var(--bg-light-gray);
+  padding: var(--space-1);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  border-radius: 10px;
+  border-top-right-radius: 0;
+  cursor: pointer;
+  gap: var(--space-05)
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bestValue {
+  color: goldenrod;
+  font-weight: bold;
 }
 
 

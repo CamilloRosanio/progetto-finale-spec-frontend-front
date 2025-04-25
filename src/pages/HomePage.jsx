@@ -13,6 +13,7 @@ import Searchbar from "../components/Searchbar";
 import Select from "../components/Select";
 import ProductCard from "../components/ProductCard";
 import SortButton from "../components/SortButton";
+import CompareSection from "../components/CompareSection";
 
 
 // COMPONENT EXPORT
@@ -104,6 +105,7 @@ export default function HomePage() {
                 setValue={setCategory}
             />
 
+            {/* COMPARE MODE */}
             <button
                 className={`button ${compareMode ? '' : 'off'}`}
                 onClick={() => {
@@ -120,6 +122,13 @@ export default function HomePage() {
         {/*  SORT */}
         <div className="sortSection">
             <h2>⯀ {productsList.length} results found</h2>
+
+            {(compareMode && toCompare.length > 1) &&
+                <CompareSection
+                    list={toCompare}
+                    close={() => setCompareMode(false)}
+                />
+            }
 
             {productsList.length > 0 &&
                 <div className="sortButtonsContainer">
