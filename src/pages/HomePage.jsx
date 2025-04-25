@@ -1,6 +1,7 @@
 // UTILITY
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { handleFavorite } from '../assets/utilityFunctions';
 
 
 // CONTEXTS
@@ -120,7 +121,7 @@ export default function HomePage() {
             {
                 productsList.map(p => <ProductCard
                     onClick={() => navigate(`/details/${p.id}`)}
-                    handleFavorite={() => console.log('Handle Favorite')}
+                    handleFavorite={null}
                     key={p.id}
                     category={p.category}
                     title={p.title}

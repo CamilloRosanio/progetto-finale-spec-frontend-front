@@ -33,6 +33,7 @@ function ProductCard({
             </div>
 
             <button
+                className="favoriteButton"
                 onClick={handleFavorite}
             >❤</button>
         </div >

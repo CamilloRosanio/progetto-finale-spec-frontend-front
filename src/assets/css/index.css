@@ -262,6 +262,10 @@ header {
   color: var(--color-6);
 }
 
+.favoriteButton:hover {
+  color: var(--color-6);
+}
+
 
 
 /*******************************************************************

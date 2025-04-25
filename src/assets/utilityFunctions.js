@@ -24,20 +24,16 @@ function debounce(callback, delay) {
     }
 }
 
-const handleFavorite = (productList, favorites, id) => {
+const handleFavorite = (list, favorites, setFavorites, id) => {
     const isFavorite = favorites.some(product => product.id === id);
-    const productToAdd = productList.find(product => product.id === id);
+    const productToAdd = list.find(product => product.id === id);
 
     if (isFavorite) {
-        return favorites.filter(product => product.id !== id);
+        setFavorites(favorites.filter(product => product.id !== id));
     } else if (productToAdd) {
-        return [...favorites, productToAdd];
+        setFavorites([...favorites, productToAdd]);
     }
-
-    return favorites;
 };
-
-
 
 
 
