@@ -17,6 +17,8 @@ export const MainContextProvider = ({ children }) => {
     // USE-STATE DATA
     const [products, setProducts] = useState([]);
     const [favorites, setFavorites] = useState([]);
+    const [compareMode, setCompareMode] = useState(true);
+    const [toCompare, setToCompare] = useState([]);
 
     // INIT USE-EFFECT
     useEffect(() => {
@@ -33,7 +35,17 @@ export const MainContextProvider = ({ children }) => {
     }, []);
 
     return <>
-        <MainContext.Provider value={{ products, setProducts, favorites, setFavorites }}>{children}</MainContext.Provider>
+        <MainContext.Provider value={{
+            products,
+            setProducts,
+            favorites,
+            setFavorites,
+            compareMode,
+            setCompareMode,
+            toCompare,
+            setToCompare,
+        }}
+        >{children}</MainContext.Provider>
     </>
 }
 

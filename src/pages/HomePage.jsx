@@ -1,7 +1,7 @@
 // UTILITY
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { handleFavorite } from '../assets/utilityFunctions';
+import { handleFavorite, onOff, handleSelection } from '../assets/utilityFunctions';
 
 
 // CONTEXTS
@@ -22,7 +22,15 @@ export default function HomePage() {
     const navigate = useNavigate();
 
     // CONTEXTS DATA
-    const { products, favorites, setFavorites } = useMainContext();
+    const {
+        products,
+        favorites,
+        setFavorites,
+        compareMode,
+        setCompareMode,
+        toCompare,
+        setToCompare
+    } = useMainContext();
 
     // USE-STATE
     const [query, setQuery] = useState('');
@@ -96,6 +104,17 @@ export default function HomePage() {
                 setValue={setCategory}
             />
 
+            <button
+                className={`button ${compareMode ? '' : 'off'}`}
+                onClick={() => {
+                    onOff(compareMode, setCompareMode);
+                    if (!compareMode) {
+                        setToCompare([]);
+                    }
+                }}
+            >COMPARE {compareMode ? 'ON' : 'OFF'}</button>
+
+
         </div>
 
         {/*  SORT */}
@@ -130,6 +149,10 @@ export default function HomePage() {
                     quantity={p.quantity}
                     price={p.price}
                     status={p.status}
+                    selectMode={compareMode}
+                    actionIcon='❤'
+                    handleSelect={() => handleSelection(products, toCompare, setToCompare, p.id)}
+                    isSelected={toCompare.some(pFav => String(pFav.id) === String(p.id))}
                 />)
             }
         </div>

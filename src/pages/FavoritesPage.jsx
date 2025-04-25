@@ -79,7 +79,7 @@ export default function FavoritesPage() {
 
     return <>
 
-        <h1>❤️ My Favorites</h1>
+        <h1>My Favorites</h1>
 
         {/* FILTERS */}
         <div className="filtersContainer">
@@ -101,7 +101,7 @@ export default function FavoritesPage() {
 
         {/*  SORT */}
         <div className="sortSection">
-            <h2>⯀ {favorites.length} favorites found</h2>
+            <h2>⯀ {favorites.length} favorites in your list</h2>
 
             {sortedFavorites.length > 0 &&
                 <div className="sortButtonsContainer">
@@ -131,6 +131,7 @@ export default function FavoritesPage() {
                     quantity={p.quantity}
                     price={p.price}
                     status={p.status}
+                    actionIcon='✖'
                 />)
             }
         </div>

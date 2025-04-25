@@ -24,7 +24,7 @@ function debounce(callback, delay) {
     }
 }
 
-const handleFavorite = (list, favorites, setFavorites, id) => {
+function handleFavorite(list, favorites, setFavorites, id) {
     const isFavorite = favorites.some(product => product.id === id);
     const productToAdd = list.find(product => product.id === id);
 
@@ -35,10 +35,36 @@ const handleFavorite = (list, favorites, setFavorites, id) => {
     }
 
     // debug
-    console.log('FAVORITES:', favorites);
+    // console.log('FAVORITES:', favorites);
 };
+
+function handleSelection(list, selectedList, setSelectedList, id) {
+    const isSelected = selectedList.some(product => product.id === id);
+    const productToAdd = list.find(product => product.id === id);
+
+    if (isSelected) {
+        setSelectedList(selectedList.filter(product => product.id !== id));
+    } else if (productToAdd) {
+        if (selectedList.length > 1) {
+            return alert('You can compare a maximum of 2 products at a time. Deselect one first to proceed.');
+        } else {
+            setSelectedList([...selectedList, productToAdd]);
+        }
+    }
+
+    // debug
+    // console.log('COMPARE:', selectedList);
+};
+
+function onOff(value, setValue) {
+    if (value) {
+        setValue(false);
+    } else {
+        setValue(true);
+    }
+}
 
 
 
 // EXPORT
-export { fetchJson, fetchProducts, debounce, handleFavorite, };
+export { fetchJson, fetchProducts, debounce, handleFavorite, onOff, handleSelection, };

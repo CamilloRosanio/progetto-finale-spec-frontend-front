@@ -13,6 +13,10 @@ function ProductCard({
     onClick,
     handleFavorite,
     isFavorite,
+    actionIcon,
+    selectMode,
+    handleSelect,
+    isSelected,
 }) {
 
     // debug
@@ -20,26 +24,34 @@ function ProductCard({
 
     return <>
 
-        <div className='card' >
-            <div className="infoSection" onClick={onClick}>
-                <h4 className="pCategory">{category}</h4>
-                <h3>{title}</h3>
-                {brand && <p className="pBrand">by {brand}</p>}
-                {quantity && <p>in stock: <strong>{quantity}</strong></p>}
-            </div>
+        <div className={`card ${(selectMode && isSelected) ? 'isSelected' : ''}`} >
 
-            <div className="flex">
-                <div className="infoSection" onClick={onClick}>
-                    {status === 'not available' ? <p className="notAvailable">{status} ●</p> : <p>{status} ●</p>}
-                    {price && <p><strong>{price.toFixed(2)} €</strong></p>}
+            {selectMode &&
+                <div
+                    onClick={handleSelect}
+                    className="checkbox"
+                >{isSelected && '●'}</div>
+            }
 
+            <div className="flex" onClick={onClick}>
+                <div className="infoSection" >
+                    <h4 className="pCategory">{category}</h4>
+                    <h3>{title}</h3>
+                    {brand && <p className="pBrand">by {brand}</p>}
+                    {quantity && <p>in stock: <strong>{quantity}</strong></p>}
                 </div>
 
-                <button
-                    className={`favoriteButton ${isFavorite ? 'isFavorite' : ''}`}
-                    onClick={handleFavorite}
-                >❤</button>
+                <div className="infoSection">
+                    {status === 'not available' ? <p className="notAvailable">{status} ●</p> : <p>{status} ●</p>}
+                    {price && <p><strong>{price.toFixed(2)} €</strong></p>}
+                </div>
+
             </div>
+            <button
+                className={`favoriteButton ${isFavorite ? 'isFavorite' : ''}`}
+                onClick={handleFavorite}
+            >{actionIcon}</button>
+
         </div >
 
     </>

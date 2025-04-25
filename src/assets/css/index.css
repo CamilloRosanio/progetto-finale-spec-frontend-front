@@ -91,6 +91,27 @@ h1 {
   gap: var(--space-1);
 }
 
+.button {
+  color: var(--color-4);
+  border-radius: 35px;
+  background-color: var(--color-5);
+  padding: var(--space-05) var(--space-2);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.checkbox {
+  margin-left: .5rem;
+  border-radius: 3px;
+  border: 2px solid var(--color-2);
+  height: 15px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2px;
+}
+
 
 
 /*******************************************************************
@@ -113,6 +134,7 @@ header {
 
 .navbarLinks {
   display: flex;
+  align-items: center;
   gap: var(--space-1)
 }
 
@@ -139,7 +161,7 @@ header {
 .searchbar {
   display: flex;
   justify-content: space-between;
-  min-width: 300px;
+  min-width: 270px;
   padding: var(--space-05) 1.3rem;
   padding-right: var(--space-05);
   border-radius: 35px;
@@ -171,7 +193,7 @@ header {
 .selectContainer {
   display: flex;
   justify-content: space-between;
-  min-width: 300px;
+  min-width: 270px;
   padding: var(--space-05) 1.3rem;
   padding-right: var(--space-05);
   border-radius: 35px;
@@ -189,6 +211,10 @@ header {
 .select:focus {
   outline: none;
   border: none;
+}
+
+.button.off {
+  background-color: var(--color-3);
 }
 
 
@@ -237,9 +263,25 @@ header {
   padding: var(--space-1);
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-radius: 35px;
   border-top-right-radius: 0;
   cursor: pointer;
+  gap: var(--space-1)
+}
+
+.card h3 {
+  font-size: 1.1rem;
+}
+
+.card.isSelected {
+  border: 3px solid var(--color-5);
+}
+
+.card .flex {
+  gap: var(--space-1);
+  justify-content: space-between;
+  flex-grow: 1;
 }
 
 .infoSection {
@@ -253,7 +295,7 @@ header {
   font-weight: normal;
   text-align: center;
   padding: 0.15rem 0.5rem;
-  min-width: 120px;
+  min-width: 100px;
   max-width: 200px;
   background-color: var(--color-2);
   border-radius: 35px;
