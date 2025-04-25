@@ -12,6 +12,7 @@ function ProductCard({
     price,
     onClick,
     handleFavorite,
+    isFavorite,
 }) {
 
     // debug
@@ -33,7 +34,7 @@ function ProductCard({
             </div>
 
             <button
-                className="favoriteButton"
+                className={`favoriteButton ${isFavorite ? 'isFavorite' : ''}`}
                 onClick={handleFavorite}
             >❤</button>
         </div >

@@ -33,6 +33,9 @@ const handleFavorite = (list, favorites, setFavorites, id) => {
     } else if (productToAdd) {
         setFavorites([...favorites, productToAdd]);
     }
+
+    // debug
+    console.log('FAVORITES:', favorites);
 };
 
 

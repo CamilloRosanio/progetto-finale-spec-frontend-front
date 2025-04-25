@@ -121,7 +121,8 @@ export default function HomePage() {
             {
                 productsList.map(p => <ProductCard
                     onClick={() => navigate(`/details/${p.id}`)}
-                    handleFavorite={null}
+                    handleFavorite={() => handleFavorite(products, favorites, setFavorites, p.id)}
+                    isFavorite={favorites.some(pFav => String(pFav.id) === String(p.id))}
                     key={p.id}
                     category={p.category}
                     title={p.title}
