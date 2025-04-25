@@ -82,8 +82,8 @@ main {
   margin: auto;
 }
 
-.hidden {
-  display: none;
+h1 {
+  margin-bottom: var(--space-2);
 }
 
 
@@ -249,6 +249,7 @@ header {
   text-align: center;
   padding: 0.15rem 0.5rem;
   min-width: 120px;
+  max-width: 200px;
   background-color: var(--color-2);
   border-radius: 35px;
 }
@@ -259,6 +260,29 @@ header {
 
 .notAvailable {
   color: var(--color-6);
+}
+
+
+
+/*******************************************************************
+# DETAILS
+*******************************************************************/
+
+.detailsSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.detailsSection h2 {
+  color: var(--color-5);
+  font-weight: normal;
+  font-size: 1.2rem;
+}
+
+.productInfo {
+  display: flex;
+  gap: var(--space-1);
 }
 
 

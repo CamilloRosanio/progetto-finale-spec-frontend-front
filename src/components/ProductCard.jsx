@@ -10,6 +10,8 @@ function ProductCard({
     quantity,
     status,
     price,
+    onClick,
+    handleFavorite,
 }) {
 
     // debug
@@ -17,18 +19,22 @@ function ProductCard({
 
     return <>
 
-        <div className='card'>
-            <div className="infoSection">
+        <div className='card' >
+            <div className="infoSection" onClick={onClick}>
                 <h4 className="pCategory">{category}</h4>
                 <h3>{title}</h3>
                 {brand && <p className="pBrand">by {brand}</p>}
                 {quantity && <p>in stock: <strong>{quantity}</strong></p>}
             </div>
 
-            <div className="infoSection">
+            <div className="infoSection" onClick={onClick}>
                 {status === 'not available' ? <p className="notAvailable">{status} ●</p> : <p>{status} ●</p>}
                 {price && <p><strong>{price.toFixed(2)} €</strong></p>}
             </div>
+
+            <button
+                onClick={handleFavorite}
+            >❤</button>
         </div >
 
     </>

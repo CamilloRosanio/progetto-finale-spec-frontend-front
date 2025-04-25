@@ -16,6 +16,7 @@ export const MainContextProvider = ({ children }) => {
 
     // USE-STATE DATA
     const [products, setProducts] = useState([]);
+    const [favorites, setFavorites] = useState([]);
 
     // INIT USE-EFFECT
     useEffect(() => {
@@ -24,7 +25,7 @@ export const MainContextProvider = ({ children }) => {
         fetchProducts(VITE_API_URL, `/products`)
             .then(products => {
                 // debug
-                // console.log('PRODUCT EXAMPLE: ', products[0]);
+                console.log('PRODUCT EXAMPLE: ', products[0]);
                 setProducts(products);
             })
             .catch(error => console.error(error))
@@ -32,7 +33,7 @@ export const MainContextProvider = ({ children }) => {
     }, []);
 
     return <>
-        <MainContext.Provider value={{ products, setProducts }}>{children}</MainContext.Provider>
+        <MainContext.Provider value={{ products, setProducts, favorites, setFavorites }}>{children}</MainContext.Provider>
     </>
 }
 

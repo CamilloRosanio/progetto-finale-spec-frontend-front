@@ -12,7 +12,7 @@ import Layout from './layouts/Layout';
 
 // PAGES
 import HomePage from './pages/HomePage';
-import ItemDetailsPage from './pages/ItemDetailsPage';
+import DetailsPage from './pages/DetailsPage';
 import FavoritesPage from './pages/FavoritesPage';
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -35,7 +35,7 @@ function App() {
               {/* PAGES */}
               <Route index Component={HomePage}></Route>
               <Route path='/favorites' Component={FavoritesPage}></Route>
-              <Route path='/details/:id' Component={ItemDetailsPage}></Route>
+              <Route path='/details/:id' Component={DetailsPage}></Route>
 
               {/* NOT FOUND PAGE */}
               <Route path='*' Component={NotFoundPage}></Route>

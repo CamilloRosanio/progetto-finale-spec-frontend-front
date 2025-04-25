@@ -1,5 +1,9 @@
-// CONTEXTS
+// UTILITY
 import { useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+
+
+// CONTEXTS
 import { useMainContext } from "../contexts/MainContext";
 
 
@@ -13,8 +17,11 @@ import SortButton from "../components/SortButton";
 // COMPONENT EXPORT
 export default function HomePage() {
 
+    // NAVIGATE
+    const navigate = useNavigate();
+
     // CONTEXTS DATA
-    const { products } = useMainContext();
+    const { products, favorites, setFavorites } = useMainContext();
 
     // USE-STATE
     const [query, setQuery] = useState('');
@@ -44,7 +51,7 @@ export default function HomePage() {
         return sortedProducts;
     }, [products, query, category, sortBy, sortOrder]);
 
-    // DATA
+    // SUPPORT
     const categories = products.reduce((acc, p) => {
         if (!acc.includes(p.category)) {
             acc.push(p.category);
@@ -53,7 +60,7 @@ export default function HomePage() {
     }, []);
 
     // SORT BY
-    const sortFields = ['title', 'category', 'price'];
+    const sortFields = ['category', 'title', 'price'];
     const sortArrow = sortOrder === 1 ? '▼' : '▲';
 
     const handleSort = (field) => {
@@ -70,17 +77,19 @@ export default function HomePage() {
 
     return <>
 
+        <h1>Let the search begin!</h1>
+
+        {/* FILTERS */}
         <div className="filtersContainer">
-            {/* SEARCHBAR */}
+
             <Searchbar
-                placeholder="Search by name.."
+                placeholder="🔍 Search by name.."
                 onDebouncedChange={setQuery}
                 reset={setQuery}
             />
 
-            {/* SELECT */}
             <Select
-                placeholder='Filter by category..'
+                placeholder='▼ Filter by category..'
                 options={categories}
                 value={category}
                 setValue={setCategory}
@@ -88,28 +97,30 @@ export default function HomePage() {
 
         </div>
 
-        {/*  LIST */}
+        {/*  SORT */}
         <div className="sortSection">
             <h2>✱ {productsList.length} results found</h2>
 
-            <div className="sortButtonsContainer">
-
-                <h3>SORT BY</h3>
-
-                {sortFields.map((c, index) =>
-                    <SortButton
-                        key={index}
-                        text={sortBy === c ? `${sortArrow} ${c}` : c}
-                        sortCriteria={sortBy}
-                        onClick={() => handleSort(c)}
-                    />
-                )}
-            </div>
+            {productsList.length > 0 &&
+                <div className="sortButtonsContainer">
+                    <h3>SORT BY</h3>
+                    {sortFields.map((c, index) =>
+                        <SortButton
+                            key={index}
+                            text={sortBy === c ? `${sortArrow} ${c}` : c}
+                            sortCriteria={sortBy}
+                            onClick={() => handleSort(c)}
+                        />
+                    )}
+                </div>}
         </div>
 
+        {/* LIST */}
         <div className="cardList">
             {
                 productsList.map(p => <ProductCard
+                    onClick={() => navigate(`/details/${p.id}`)}
+                    handleFavorite={() => console.log('Handle Favorite')}
                     key={p.id}
                     category={p.category}
                     title={p.title}

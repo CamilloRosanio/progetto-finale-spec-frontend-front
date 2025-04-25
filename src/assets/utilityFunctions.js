@@ -24,7 +24,22 @@ function debounce(callback, delay) {
     }
 }
 
+const handleFavorite = (productList, favorites, id) => {
+    const isFavorite = favorites.some(product => product.id === id);
+    const productToAdd = productList.find(product => product.id === id);
+
+    if (isFavorite) {
+        return favorites.filter(product => product.id !== id);
+    } else if (productToAdd) {
+        return [...favorites, productToAdd];
+    }
+
+    return favorites;
+};
+
+
+
 
 
 // EXPORT
-export { fetchJson, fetchProducts, debounce, };
+export { fetchJson, fetchProducts, debounce, handleFavorite, };

@@ -13,11 +13,7 @@ export default function Navbar() {
 
             <div className="navbarLinks">
                 <NavLink to="/" className="navlink">Home</NavLink>
-
-                <NavLink to="/details" className="navlink">Item Details</NavLink>
                 <NavLink to="/favorites" className="navlink">Favorites</NavLink>
-
-                <NavLink to="/pagina-inesistente" className="navlink">Not found Page</NavLink>
             </div>
         </div>
 
