@@ -42,14 +42,12 @@ export const MainContextProvider = ({ children }) => {
         setFavorites(storedFavorites);
     }, []);
 
-    // USE-EFFECT - STORE FAVORITES
+    // USE-EFFECT - UPDATE STORED FAVORITES
     useEffect(() => {
+        // NOTA: funziona in combinazione con la funzione "handleFavorite" che si trova in "utilityFunctions".
         if (favorites && favorites.length > 0) {
             localStorage.setItem('favorites', JSON.stringify(favorites));
         }
-
-        // debug
-        console.log('UPDATED FAVORITES:', favorites);
     }, [favorites]);
 
     return <>

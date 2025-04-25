@@ -30,6 +30,7 @@ function handleFavorite(list, favorites, setFavorites, id) {
 
     if (isFavorite && favorites.length === 1) {
         setFavorites(favorites.filter(product => product.id !== id));
+        // Se l'elemento è l'unico elemento nell'array dei "favorites" allora viene anche eliminato l'elemento "favorites" dal LOCAL STORAGE.
         localStorage.removeItem('favorites');
     } else if (isFavorite) {
         setFavorites(favorites.filter(product => product.id !== id));
