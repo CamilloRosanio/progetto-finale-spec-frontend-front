@@ -100,7 +100,7 @@ export default function HomePage() {
 
         {/*  SORT */}
         <div className="sortSection">
-            <h2>✱ {productsList.length} results found</h2>
+            <h2>⯀ {productsList.length} results found</h2>
 
             {productsList.length > 0 &&
                 <div className="sortButtonsContainer">

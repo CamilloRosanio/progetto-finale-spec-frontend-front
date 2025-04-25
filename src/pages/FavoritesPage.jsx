@@ -1,6 +1,7 @@
 // UTILITY
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { handleFavorite } from '../assets/utilityFunctions';
 
 
 // CONTEXTS
@@ -21,7 +22,7 @@ export default function FavoritesPage() {
     const navigate = useNavigate();
 
     // CONTEXTS DATA
-    const { favorites } = useMainContext();
+    const { products, favorites, setFavorites } = useMainContext();
 
     // USE-STATE
     const [query, setQuery] = useState('');
@@ -30,14 +31,14 @@ export default function FavoritesPage() {
     const [sortOrder, setSortOrder] = useState(1);
 
     // USE-MEMO
-    const productsList = useMemo(() => {
-        const filteredProducts = favorites.filter(p => {
+    const sortedFavorites = useMemo(() => {
+        const filteredFavorites = favorites.filter(p => {
             const isInTitle = p.title.toLowerCase().includes(query.toLowerCase());
             const isInCategory = category ? p.category === category : true;
             return isInTitle && isInCategory;
         });
 
-        const sortedProducts = [...filteredProducts].sort((a, b) => {
+        const sorted = [...filteredFavorites].sort((a, b) => {
             const aKey = a[sortBy];
             const bKey = b[sortBy];
 
@@ -48,11 +49,12 @@ export default function FavoritesPage() {
             }
         });
 
-        return sortedProducts;
+        return sorted;
     }, [favorites, query, category, sortBy, sortOrder]);
 
+
     // SUPPORT
-    const categories = favorites.reduce((acc, p) => {
+    const categories = products.reduce((acc, p) => {
         if (!acc.includes(p.category)) {
             acc.push(p.category);
         }
@@ -77,19 +79,19 @@ export default function FavoritesPage() {
 
     return <>
 
-        <h1>❤ My Favorites</h1>
+        <h1>❤️ My Favorites</h1>
 
         {/* FILTERS */}
         <div className="filtersContainer">
 
             <Searchbar
-                placeholder="🔍 Search by name.."
+                placeholder="❤️ Search favorite by name.."
                 onDebouncedChange={setQuery}
                 reset={setQuery}
             />
 
             <Select
-                placeholder='▼ Filter by category..'
+                placeholder='▼ Filter favorites by category..'
                 options={categories}
                 value={category}
                 setValue={setCategory}
@@ -99,11 +101,11 @@ export default function FavoritesPage() {
 
         {/*  SORT */}
         <div className="sortSection">
-            <h2>✱ {productsList.length} results found</h2>
+            <h2>⯀ {favorites.length} favorites found</h2>
 
-            {productsList.length > 0 &&
+            {sortedFavorites.length > 0 &&
                 <div className="sortButtonsContainer">
-                    <h3>SORT BY</h3>
+                    <h3>SORT FAVORITES BY</h3>
                     {sortFields.map((c, index) =>
                         <SortButton
                             key={index}
@@ -118,8 +120,10 @@ export default function FavoritesPage() {
         {/* LIST */}
         <div className="cardList">
             {
-                productsList.map(p => <ProductCard
+                sortedFavorites.map(p => <ProductCard
                     onClick={() => navigate(`/details/${p.id}`)}
+                    handleFavorite={() => handleFavorite(products, favorites, setFavorites, p.id)}
+                    isFavorite={favorites.some(pFav => String(pFav.id) === String(p.id))}
                     key={p.id}
                     category={p.category}
                     title={p.title}

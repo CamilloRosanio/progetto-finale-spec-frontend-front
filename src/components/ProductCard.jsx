@@ -28,15 +28,18 @@ function ProductCard({
                 {quantity && <p>in stock: <strong>{quantity}</strong></p>}
             </div>
 
-            <div className="infoSection" onClick={onClick}>
-                {status === 'not available' ? <p className="notAvailable">{status} ●</p> : <p>{status} ●</p>}
-                {price && <p><strong>{price.toFixed(2)} €</strong></p>}
-            </div>
+            <div className="flex">
+                <div className="infoSection" onClick={onClick}>
+                    {status === 'not available' ? <p className="notAvailable">{status} ●</p> : <p>{status} ●</p>}
+                    {price && <p><strong>{price.toFixed(2)} €</strong></p>}
 
-            <button
-                className={`favoriteButton ${isFavorite ? 'isFavorite' : ''}`}
-                onClick={handleFavorite}
-            >❤</button>
+                </div>
+
+                <button
+                    className={`favoriteButton ${isFavorite ? 'isFavorite' : ''}`}
+                    onClick={handleFavorite}
+                >❤</button>
+            </div>
         </div >
 
     </>
