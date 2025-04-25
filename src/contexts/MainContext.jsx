@@ -17,13 +17,11 @@ export const MainContextProvider = ({ children }) => {
     // USE-STATE DATA
     const [products, setProducts] = useState([]);
     const [favorites, setFavorites] = useState([]);
-    const [compareMode, setCompareMode] = useState(true);
+    const [compareMode, setCompareMode] = useState(false);
     const [toCompare, setToCompare] = useState([]);
 
-    // INIT USE-EFFECT
+    // INIT USE-EFFECT - FETCH
     useEffect(() => {
-
-        // FETCH PRODUCTS
         fetchProducts(VITE_API_URL, `/products`)
             .then(products => {
                 // debug
@@ -31,8 +29,28 @@ export const MainContextProvider = ({ children }) => {
                 setProducts(products);
             })
             .catch(error => console.error(error))
-
     }, []);
+
+    // INIT USE-EFFECT - GET STORED FAVORITES
+    useEffect(() => {
+        let storedFavorites = localStorage.getItem('favorites');
+        if (storedFavorites) {
+            storedFavorites = JSON.parse(storedFavorites);
+        } else {
+            storedFavorites = [];
+        }
+        setFavorites(storedFavorites);
+    }, []);
+
+    // USE-EFFECT - STORE FAVORITES
+    useEffect(() => {
+        if (favorites && favorites.length > 0) {
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+
+        // debug
+        console.log('UPDATED FAVORITES:', favorites);
+    }, [favorites]);
 
     return <>
         <MainContext.Provider value={{

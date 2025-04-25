@@ -28,9 +28,12 @@ function handleFavorite(list, favorites, setFavorites, id) {
     const isFavorite = favorites.some(product => product.id === id);
     const productToAdd = list.find(product => product.id === id);
 
-    if (isFavorite) {
+    if (isFavorite && favorites.length === 1) {
         setFavorites(favorites.filter(product => product.id !== id));
-    } else if (productToAdd) {
+        localStorage.removeItem('favorites');
+    } else if (isFavorite) {
+        setFavorites(favorites.filter(product => product.id !== id));
+    } else if (!isFavorite) {
         setFavorites([...favorites, productToAdd]);
     }
 
@@ -46,7 +49,7 @@ function handleSelection(list, selectedList, setSelectedList, id) {
         setSelectedList(selectedList.filter(product => product.id !== id));
     } else if (productToAdd) {
         if (selectedList.length > 4) {
-            return alert('You can compare a maximum of 2 products at a time. Deselect one first to proceed.');
+            return alert('You can compare a maximum of products at a time. Deselect one first to proceed.');
         } else {
             setSelectedList([...selectedList, productToAdd]);
         }
