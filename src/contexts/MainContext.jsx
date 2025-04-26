@@ -1,6 +1,6 @@
 // UTILITY
 import { createContext, useContext, useState, useEffect } from 'react';
-import { fetchProducts } from '../assets/utilityFunctions';
+import { fetchProducts, } from '../assets/utilityFunctions';
 
 
 // ENV

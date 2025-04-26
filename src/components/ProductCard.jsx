@@ -2,6 +2,10 @@
 import { memo } from "react";
 
 
+// COMPONENTS
+import RoundButton from "./RoundButton";
+
+
 // COMPONENT STRUCTURE
 function ProductCard({
     category,
@@ -38,7 +42,7 @@ function ProductCard({
                     <h4 className="pCategory">{category}</h4>
                     <h3>{title}</h3>
                     {brand && <p className="pBrand">by {brand}</p>}
-                    {quantity && <p>in stock: <strong>{quantity}</strong></p>}
+                    {quantity > 0 && <p>in stock: <strong>{quantity}</strong></p>}
                 </div>
 
                 <div className="infoSection">

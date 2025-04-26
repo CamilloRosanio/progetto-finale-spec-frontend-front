@@ -1,3 +1,8 @@
+/*******************************************************************
+# FETCH
+*******************************************************************/
+
+// SUPPORT FUNCTION
 async function fetchJson(urlRoot, urlAdd) {
     const response = await fetch(`${urlRoot}${urlAdd}`);
     const object = await response.json();
@@ -9,10 +14,33 @@ async function fetchProducts(urlRoot, urlAdd) {
     try {
         products = await fetchJson(urlRoot, urlAdd);
     } catch (error) {
-        throw new Error('PRODUCTS fetch failed.')
+        throw new Error('FETCH(products) [ INDEX ] fetch failed.')
     }
     return products;
 }
+
+async function fetchDeleteProduct(urlRoot, urlAdd, id) {
+
+    try {
+        const response = await fetch(`${urlRoot}${urlAdd}${id}`, {
+            method: 'DELETE',
+        });
+
+        if (!response.ok) {
+            throw new Error(`FETCH [ DELETE ${urlAdd}${id} ] failed.`)
+        }
+
+        // debug
+        // console.log(`FETCH [ DELETE ${urlAdd}${id} ] Item with ID ${id} successfully deleted. \nSTATUS: ${response.status}`);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
+/*******************************************************************
+# VARIOUS
+*******************************************************************/
 
 function debounce(callback, delay) {
     let timer;
@@ -73,4 +101,12 @@ function onOff(value, setValue) {
 
 
 // EXPORT
-export { fetchJson, fetchProducts, debounce, handleFavorite, onOff, handleSelection, };
+export {
+    fetchJson,
+    fetchDeleteProduct,
+    fetchProducts,
+    debounce,
+    handleFavorite,
+    onOff,
+    handleSelection,
+};

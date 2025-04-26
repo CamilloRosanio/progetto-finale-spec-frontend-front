@@ -91,12 +91,20 @@ h1 {
   gap: var(--space-1);
 }
 
+.flexCol {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+}
+
 .button {
   color: var(--color-4);
   border-radius: 35px;
   background-color: var(--color-5);
   padding: var(--space-05) var(--space-2);
-  font-weight: bold;
+  font-weight: medium;
   cursor: pointer;
 }
 
@@ -114,6 +122,46 @@ h1 {
 
 .warning {
   color: var(--color-6);
+}
+
+
+
+/*******************************************************************
+# MODAL
+*******************************************************************/
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width: 60%;
+  height: 50vh;
+  background-color: var(--color-4);
+  border-radius: 15px;
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.modalheader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal .button.close {
+  background-color: var(--color-6);
 }
 
 
@@ -383,7 +431,8 @@ header {
   border-radius: 35px;
   border-top-right-radius: 0;
   cursor: pointer;
-  gap: var(--space-1)
+  gap: var(--space-1);
+  flex-grow: 1;
 }
 
 .card h3 {
@@ -431,6 +480,12 @@ header {
 
 .isFavorite {
   color: var(--color-6);
+}
+
+.productRow {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-1)
 }
 
 

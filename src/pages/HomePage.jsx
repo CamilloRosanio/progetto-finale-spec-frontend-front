@@ -1,7 +1,12 @@
 // UTILITY
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { handleFavorite, onOff, handleSelection } from '../assets/utilityFunctions';
+import { fetchProducts, handleFavorite, onOff, handleSelection } from '../assets/utilityFunctions';
+
+// debug
+import TestFetchButton from "../components/TestFetchButton";
+const { VITE_API_URL } = import.meta.env;
+import { fetchDeleteProduct } from '../assets/utilityFunctions';
 
 
 // CONTEXTS
@@ -14,6 +19,8 @@ import Select from "../components/Select";
 import ProductCard from "../components/ProductCard";
 import SortButton from "../components/SortButton";
 import CompareSection from "../components/CompareSection";
+import RoundButton from "../components/RoundButton";
+import Modal from "../components/Modal";
 
 
 // COMPONENT EXPORT
@@ -25,6 +32,7 @@ export default function HomePage() {
     // CONTEXTS DATA
     const {
         products,
+        setProducts,
         favorites,
         setFavorites,
         compareMode,
@@ -38,6 +46,8 @@ export default function HomePage() {
     const [category, setCategory] = useState('');
     const [sortBy, setSortBy] = useState('title');
     const [sortOrder, setSortOrder] = useState(1);
+    const [showModal, setShowModal] = useState(false);
+    const [deleteId, setDeleteId] = useState('');
 
     // USE-MEMO
     const productsList = useMemo(() => {
@@ -68,6 +78,13 @@ export default function HomePage() {
         }
         return acc;
     }, []);
+
+    async function refreshProducts(urlRoot, urlAdd) {
+        await setProducts(await fetchProducts(urlRoot, urlAdd));
+
+        // debug
+        // console.log('REFRESHED LIST:', products.length, 'Products');
+    }
 
     // SORT BY
     const sortFields = ['category', 'title', 'price'];
@@ -147,23 +164,52 @@ export default function HomePage() {
         {/* LIST */}
         <div className="cardList">
             {
-                productsList.map(p => <ProductCard
-                    onClick={() => navigate(`/details/${p.id}`)}
-                    handleFavorite={() => handleFavorite(products, favorites, setFavorites, p.id)}
-                    isFavorite={favorites.some(pFav => String(pFav.id) === String(p.id))}
-                    key={p.id}
-                    category={p.category}
-                    title={p.title}
-                    brand={p.brand}
-                    quantity={p.quantity}
-                    price={p.price}
-                    status={p.status}
-                    selectMode={compareMode}
-                    actionIcon='❤'
-                    handleSelect={() => handleSelection(products, toCompare, setToCompare, p.id)}
-                    isSelected={toCompare.some(pFav => String(pFav.id) === String(p.id))}
-                />)
+                productsList.map((p, index) =>
+                    <div className="productRow" key={index}>
+                        <ProductCard
+                            onClick={() => navigate(`/details/${p.id}`)}
+                            handleFavorite={() => handleFavorite(products, favorites, setFavorites, p.id)}
+                            isFavorite={favorites.some(pFav => String(pFav.id) === String(p.id))}
+                            category={p.category}
+                            title={p.title}
+                            brand={p.brand}
+                            quantity={p.quantity}
+                            price={p.price}
+                            status={p.status}
+                            selectMode={compareMode}
+                            actionIcon='❤'
+                            handleSelect={() => handleSelection(products, toCompare, setToCompare, p.id)}
+                            isSelected={toCompare.some(pFav => String(pFav.id) === String(p.id))}
+                        />
+
+                        {/* DELETE WITHOUT MODAL */}
+                        {/* <RoundButton onClick={() => {
+                            fetchDeleteProduct(VITE_API_URL, '/products/', p.id);
+                            refreshProducts(VITE_API_URL, '/products/');
+                        }} /> */}
+
+                        {/* DELETE WITH MODAL */}
+                        <RoundButton onClick={() => {
+                            setDeleteId(p.id);
+                            setShowModal(true);
+                        }} />
+
+                    </div>
+                )
             }
+
+            {/* MODAL - DELETE PRODUCT */}
+            <Modal
+                showModal={showModal}
+                message={`Do you really want to delete Product with ID ${deleteId}?`}
+                confirm={() => {
+                    fetchDeleteProduct(VITE_API_URL, '/products/', deleteId);
+                    setDeleteId('');
+                    refreshProducts(VITE_API_URL, '/products/');
+                    setShowModal(false);
+                }}
+                close={() => setShowModal(false)}
+            />
         </div>
 
     </>

@@ -27,15 +27,13 @@ export default function DetailsPage() {
 
     return <>
 
+        <h1>{selectedProduct.title}</h1>
+
         {selectedProduct ?
 
             <div className='detailsSection'>
 
-                <div>
-                    <h1>{selectedProduct.title}</h1>
-                    {selectedProduct.brand && <h2>by {selectedProduct.brand}</h2>}
-                </div>
-
+                {selectedProduct.brand && <h2>by <strong>{selectedProduct.brand}</strong></h2>}
 
                 <h4 className="pCategory">{selectedProduct.category.toUpperCase()}</h4>
 
