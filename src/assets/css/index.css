@@ -160,7 +160,7 @@ h1 {
   justify-content: space-between;
 }
 
-.modal .button.close {
+.button.close {
   background-color: var(--color-6);
 }
 
@@ -217,7 +217,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: var(--space-2);
+  gap: var(--space-1);
   border: 3px solid var(--color-5);
   padding: var(--space-2);
   border-radius: 15px;
@@ -227,15 +227,19 @@ header {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-1);
+}
+
+.form> :nth-last-child(2) {
+  margin-bottom: var(--space-2);
 }
 
 .formFieldName {
-  min-width: 12%;
+  min-width: 10%;
 }
 
 .formField {
-  min-width: 400px;
+  min-width: 450px;
   padding: var(--space-05) 1.3rem;
   padding-right: var(--space-05);
   border-radius: 35px;
@@ -243,7 +247,7 @@ header {
 }
 
 form .selectContainer {
-  min-width: 432px;
+  min-width: 482px;
 }
 
 
@@ -345,8 +349,7 @@ form .selectContainer {
 
 .comparedCard {
   flex-grow: 1;
-  min-width: 30%;
-  max-width: 31%;
+  max-width: 45%;
   background-color: var(--bg-light-gray);
   padding: var(--space-1);
   display: flex;

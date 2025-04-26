@@ -121,7 +121,8 @@ export default function HomePage() {
 
             {(compareMode && toCompare.length > 0) &&
                 <CompareSection
-                    list={toCompare.sort((a, b) => a.price - b.price)}
+                    list={toCompare}
+                    // list={toCompare.sort((a, b) => a.price - b.price)}
                     close={() => setCompareMode(false)}
                 />
             }
