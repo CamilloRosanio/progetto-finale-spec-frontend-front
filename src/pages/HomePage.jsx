@@ -123,7 +123,7 @@ export default function HomePage() {
         <div className="sortSection">
             <h2>⯀ {productsList.length} results found</h2>
 
-            {(compareMode && toCompare.length > 1) &&
+            {(compareMode && toCompare.length > 0) &&
                 <CompareSection
                     list={toCompare.sort((a, b) => a.price - b.price)}
                     close={() => setCompareMode(false)}

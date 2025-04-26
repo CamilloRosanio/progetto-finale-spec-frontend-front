@@ -45,7 +45,7 @@ function handleFavorite(list, favorites, setFavorites, id) {
 function handleSelection(list, selectedList, setSelectedList, id) {
     const isSelected = selectedList.some(product => product.id === id);
     const productToAdd = list.find(product => product.id === id);
-    const comparisonLimit = 4;
+    const comparisonLimit = 5;
 
     if (isSelected) {
         setSelectedList(selectedList.filter(product => product.id !== id));
