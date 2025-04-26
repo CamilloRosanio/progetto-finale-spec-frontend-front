@@ -30,15 +30,15 @@ export default function CompareCard({
             </div>
 
             <h4 className="pCategory">{item.category}</h4>
-            <p>Brand: {item.brand}</p>
+            {item.brand && <p>Brand: {item.brand}</p>}
             {item.status === 'not available' ? <p className="notAvailable">{item.status} ●</p> : <p>{item.status} ●</p>}
             {item.quantity > 0 && <p>in stock: <strong>{item.quantity}</strong></p>}
 
             <div className='flex'>
                 {item.price === bestPrice && <span className='bestValueBadge'>★</span>}
+
                 <p>Price: <strong>{item.price} €</strong></p>
             </div>
-
         </div>
 
     </>

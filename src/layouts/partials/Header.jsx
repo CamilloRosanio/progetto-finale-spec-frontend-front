@@ -6,7 +6,9 @@ import Navbar from "./Navbar"
 export default function Header() {
     return <>
         <header>
-            <Navbar />
+            <div className="container">
+                <Navbar />
+            </div>
         </header>
 
     </>

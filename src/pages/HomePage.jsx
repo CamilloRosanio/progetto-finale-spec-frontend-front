@@ -110,9 +110,9 @@ export default function HomePage() {
                 className={`button ${compareMode ? '' : 'off'}`}
                 onClick={() => {
                     onOff(compareMode, setCompareMode);
-                    if (!compareMode) {
-                        setToCompare([]);
-                    }
+                    // if (!compareMode) {
+                    //     setToCompare([]);
+                    // }
                 }}
             >COMPARE {compareMode ? 'ON' : 'OFF'}</button>
 

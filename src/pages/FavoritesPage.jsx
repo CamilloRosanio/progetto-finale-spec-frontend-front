@@ -85,7 +85,7 @@ export default function FavoritesPage() {
         <div className="filtersContainer">
 
             <Searchbar
-                placeholder="❤️ Search favorite by name.."
+                placeholder="❤ Search favorite by name.."
                 onDebouncedChange={setQuery}
                 reset={setQuery}
             />
@@ -101,7 +101,7 @@ export default function FavoritesPage() {
 
         {/*  SORT */}
         <div className="sortSection">
-            <h2>⯀ {favorites.length} favorites in your list</h2>
+            <h2>⯀ {favorites.length} favorites in your list{favorites.length === sortedFavorites.length ? '' : ` ⯀ ${sortedFavorites.length} shown`}</h2>
 
             {sortedFavorites.length > 0 &&
                 <div className="sortButtonsContainer">
