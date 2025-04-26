@@ -113,16 +113,6 @@ export default function HomePage() {
                 <h2>⯀ {productsList.length} results found</h2>
 
                 {/* COMPARE MODE */}
-                {/* <button
-                    className={`button ${compareMode ? '' : 'off'}`}
-                    onClick={() => {
-                        onOff(compareMode, setCompareMode);
-                        // if (!compareMode) {
-                        //     setToCompare([]);
-                        // }
-                    }}
-                >COMPARE {compareMode ? 'ON' : 'OFF'}</button> */}
-
                 <h2>⯀ Compare</h2>
 
                 <div

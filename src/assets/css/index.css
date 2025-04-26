@@ -302,7 +302,6 @@ header {
   align-items: center;
 }
 
-/* Contenitore toggle - stato OFF */
 .toggle {
   position: relative;
   width: 60px;
@@ -313,12 +312,10 @@ header {
   transition: border-color 0.3s ease;
 }
 
-/* Contenitore toggle - stato ON */
 .toggle.active {
   border-color: var(--color-5);
 }
 
-/* Pallino interno - stato OFF */
 .toggle::before {
   content: '';
   position: absolute;
@@ -331,7 +328,6 @@ header {
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* Pallino interno - stato ON */
 .toggle.active::before {
   transform: translateX(30px);
   background-color: var(--color-5);
