@@ -88,6 +88,7 @@ h1 {
 
 .flex {
   display: flex;
+  align-items: center;
   gap: var(--space-1);
 }
 
@@ -264,9 +265,18 @@ header {
   justify-content: space-between;
 }
 
-.bestValue {
-  color: goldenrod;
-  font-weight: bold;
+.bestValueBadge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-4);
+  background-color: goldenrod;
+  font-size: 1.2rem;
+  height: 21px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  text-align: center;
+  padding-bottom: 3px;
 }
 
 
