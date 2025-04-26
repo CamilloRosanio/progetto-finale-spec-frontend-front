@@ -45,12 +45,13 @@ function handleFavorite(list, favorites, setFavorites, id) {
 function handleSelection(list, selectedList, setSelectedList, id) {
     const isSelected = selectedList.some(product => product.id === id);
     const productToAdd = list.find(product => product.id === id);
+    const comparisonLimit = 4;
 
     if (isSelected) {
         setSelectedList(selectedList.filter(product => product.id !== id));
     } else if (productToAdd) {
-        if (selectedList.length > 4) {
-            return alert('You can compare a maximum of products at a time. Deselect one first to proceed.');
+        if (selectedList.length > comparisonLimit) {
+            return alert(`You can compare a maximum of ${comparisonLimit + 1} products at a time. \n Deselect at least one first to proceed.`);
         } else {
             setSelectedList([...selectedList, productToAdd]);
         }
