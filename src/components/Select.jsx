@@ -4,6 +4,9 @@ import RoundButton from "./RoundButton"
 
 // COMPONENT EXPORT
 export default function Select({ placeholder, options, value, setValue }) {
+
+    // NOTA: utilizzare solo come Select per filtri di ricerca e non come Field non controllato
+
     return <>
 
         <div className="selectContainer">

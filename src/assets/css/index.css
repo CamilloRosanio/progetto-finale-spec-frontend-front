@@ -223,13 +223,27 @@ header {
   border-radius: 15px;
 }
 
-.formField {
+.formFieldContainer {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.formFieldName {
+  min-width: 12%;
+}
+
+.formField {
+  min-width: 400px;
   padding: var(--space-05) 1.3rem;
   padding-right: var(--space-05);
   border-radius: 35px;
   border: 2px solid var(--color-1);
+}
+
+form .selectContainer {
+  min-width: 432px;
 }
 
 
@@ -251,7 +265,7 @@ header {
 .searchbar {
   display: flex;
   justify-content: space-between;
-  min-width: 270px;
+  min-width: 350px;
   padding: var(--space-05) 1.3rem;
   padding-right: var(--space-05);
   border-radius: 35px;
@@ -283,7 +297,7 @@ header {
 .selectContainer {
   display: flex;
   justify-content: space-between;
-  min-width: 270px;
+  min-width: 350px;
   padding: var(--space-05) 1.3rem;
   padding-right: var(--space-05);
   border-radius: 35px;
