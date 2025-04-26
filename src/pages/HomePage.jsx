@@ -1,12 +1,15 @@
 // UTILITY
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchProducts, handleFavorite, onOff, handleSelection } from '../assets/utilityFunctions';
-
-// debug
-import TestFetchButton from "../components/TestFetchButton";
-const { VITE_API_URL } = import.meta.env;
-import { fetchDeleteProduct } from '../assets/utilityFunctions';
+import {
+    handleFavorite,
+    onOff,
+    handleSelection,
+    getUniquesByKey,
+    fetchDeleteProduct,
+    refreshProducts,
+    handleSort,
+} from '../assets/utilityFunctions';
 
 
 // CONTEXTS
@@ -72,35 +75,11 @@ export default function HomePage() {
     }, [products, query, category, sortBy, sortOrder]);
 
     // SUPPORT
-    const categories = products.reduce((acc, p) => {
-        if (!acc.includes(p.category)) {
-            acc.push(p.category);
-        }
-        return acc;
-    }, []);
-
-    async function refreshProducts(urlRoot, urlAdd) {
-        await setProducts(await fetchProducts(urlRoot, urlAdd));
-
-        // debug
-        // console.log('REFRESHED LIST:', products.length, 'Products');
-    }
+    const categories = getUniquesByKey(products, 'category');
 
     // SORT BY
     const sortFields = ['category', 'title', 'price'];
     const sortArrow = sortOrder === 1 ? '▼' : '▲';
-
-    const handleSort = (field) => {
-        if (sortBy === field) {
-            setSortOrder(prev => prev * -1);
-        } else {
-            setSortBy(field);
-            setSortOrder(1);
-        }
-
-        // debug
-        // console.log(`STATE (sortBy: ${field} | sortOrder: ${sortOrder})`);
-    }
 
     return <>
 
@@ -155,7 +134,7 @@ export default function HomePage() {
                             key={index}
                             text={sortBy === c ? `${sortArrow} ${c}` : c}
                             sortCriteria={sortBy}
-                            onClick={() => handleSort(c)}
+                            onClick={() => handleSort(c, setSortOrder, sortBy, setSortBy)}
                         />
                     )}
                 </div>}
@@ -205,7 +184,7 @@ export default function HomePage() {
                 confirm={async () => {
                     await fetchDeleteProduct(VITE_API_URL, '/products/', deleteId);
                     setDeleteId('');
-                    await refreshProducts(VITE_API_URL, '/products/');
+                    await refreshProducts(VITE_API_URL, '/products/', setProducts);
                     setShowModal(false);
                 }}
                 close={() => setShowModal(false)}

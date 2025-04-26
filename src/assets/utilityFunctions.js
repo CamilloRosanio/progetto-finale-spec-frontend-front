@@ -37,10 +37,33 @@ async function fetchDeleteProduct(urlRoot, urlAdd, id) {
     }
 }
 
+async function refreshProducts(urlRoot, urlAdd, setState) {
+    setState(await fetchProducts(urlRoot, urlAdd));
+}
+
 
 /*******************************************************************
 # VARIOUS
 *******************************************************************/
+
+function getUniquesByKey(array, key) {
+    return array.reduce((acc, item) => {
+        const value = item[key];
+        if (!acc.includes(value)) {
+            acc.push(value);
+        }
+        return acc;
+    }, []);
+}
+
+function handleSort(field, setStateSortOrder, stateSortBy, setStateSortBy) {
+    if (stateSortBy === field) {
+        setStateSortOrder(prev => prev * -1);
+    } else {
+        setStateSortBy(field);
+        setStateSortOrder(1);
+    }
+}
 
 function debounce(callback, delay) {
     let timer;
@@ -105,8 +128,11 @@ export {
     fetchJson,
     fetchDeleteProduct,
     fetchProducts,
+    handleSort,
     debounce,
     handleFavorite,
     onOff,
     handleSelection,
+    getUniquesByKey,
+    refreshProducts,
 };
