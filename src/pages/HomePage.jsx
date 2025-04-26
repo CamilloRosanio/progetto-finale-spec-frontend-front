@@ -202,10 +202,10 @@ export default function HomePage() {
             <Modal
                 showModal={showModal}
                 message={`Do you really want to delete Product with ID ${deleteId}?`}
-                confirm={() => {
-                    fetchDeleteProduct(VITE_API_URL, '/products/', deleteId);
+                confirm={async () => {
+                    await fetchDeleteProduct(VITE_API_URL, '/products/', deleteId);
                     setDeleteId('');
-                    refreshProducts(VITE_API_URL, '/products/');
+                    await refreshProducts(VITE_API_URL, '/products/');
                     setShowModal(false);
                 }}
                 close={() => setShowModal(false)}
