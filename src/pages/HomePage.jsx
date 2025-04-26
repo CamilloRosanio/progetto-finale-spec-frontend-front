@@ -104,24 +104,34 @@ export default function HomePage() {
                 value={category}
                 setValue={setCategory}
             />
-
-            {/* COMPARE MODE */}
-            <button
-                className={`button ${compareMode ? '' : 'off'}`}
-                onClick={() => {
-                    onOff(compareMode, setCompareMode);
-                    // if (!compareMode) {
-                    //     setToCompare([]);
-                    // }
-                }}
-            >COMPARE {compareMode ? 'ON' : 'OFF'}</button>
-
-
         </div>
 
         {/*  SORT */}
         <div className="sortSection">
-            <h2>⯀ {productsList.length} results found</h2>
+
+            <div className="flex">
+                <h2>⯀ {productsList.length} results found</h2>
+
+                {/* COMPARE MODE */}
+                {/* <button
+                    className={`button ${compareMode ? '' : 'off'}`}
+                    onClick={() => {
+                        onOff(compareMode, setCompareMode);
+                        // if (!compareMode) {
+                        //     setToCompare([]);
+                        // }
+                    }}
+                >COMPARE {compareMode ? 'ON' : 'OFF'}</button> */}
+
+                <h2>⯀ Compare</h2>
+
+                <div
+                    className="toggle-container"
+                    onClick={() => { onOff(compareMode, setCompareMode); }}
+                >
+                    <div className={`toggle ${compareMode ? 'active' : ''}`}></div>
+                </div>
+            </div>
 
             {(compareMode && toCompare.length > 0) &&
                 <CompareSection

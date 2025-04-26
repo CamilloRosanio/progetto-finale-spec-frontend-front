@@ -294,6 +294,52 @@ header {
 
 
 /*******************************************************************
+# TOGGLE
+*******************************************************************/
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Contenitore toggle - stato OFF */
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 29px;
+  border: 2px solid var(--color-3);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+/* Contenitore toggle - stato ON */
+.toggle.active {
+  border-color: var(--color-5);
+}
+
+/* Pallino interno - stato OFF */
+.toggle::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 19px;
+  height: 19px;
+  background-color: var(--color-3);
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Pallino interno - stato ON */
+.toggle.active::before {
+  transform: translateX(30px);
+  background-color: var(--color-5);
+}
+
+
+
+/*******************************************************************
 # SORT SECTION
 *******************************************************************/
 
