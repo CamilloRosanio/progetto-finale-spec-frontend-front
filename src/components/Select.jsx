@@ -1,3 +1,7 @@
+// COMPONENTS
+import RoundButton from "./RoundButton"
+
+
 // COMPONENT EXPORT
 export default function Select({ placeholder, options, value, setValue }) {
     return <>
@@ -22,8 +26,7 @@ export default function Select({ placeholder, options, value, setValue }) {
             </select>
 
             {/* RESET BUTTON */}
-            <div onClick={() => { setValue('') }} className="roundButton">✖</div>
-
+            <RoundButton onClick={() => { setValue('') }} />
         </div>
     </>
 }

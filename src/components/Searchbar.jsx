@@ -3,8 +3,11 @@ import { useEffect, useState, useCallback } from 'react';
 import { debounce } from '../assets/utilityFunctions';
 
 
-// COMPONENT EXPORT
+// COMPONENTS
+import RoundButton from './RoundButton';
 
+
+// COMPONENT EXPORT
 export default function Searchbar({ placeholder, onDebouncedChange, reset }) {
 
     // USE-STATE
@@ -34,7 +37,7 @@ export default function Searchbar({ placeholder, onDebouncedChange, reset }) {
             />
 
             {/* RESET BUTTON */}
-            <div onClick={() => { reset(''); setLocalValue(''); }} className="roundButton">✖</div>
+            <RoundButton onClick={() => { reset(''); setLocalValue(''); }} />
         </div>
     );
 }

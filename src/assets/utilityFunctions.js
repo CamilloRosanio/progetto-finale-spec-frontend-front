@@ -45,7 +45,8 @@ function handleFavorite(list, favorites, setFavorites, id) {
 function handleSelection(list, selectedList, setSelectedList, id) {
     const isSelected = selectedList.some(product => product.id === id);
     const productToAdd = list.find(product => product.id === id);
-    const comparisonLimit = 5;
+    // ESEMPIO: limite =5 significa max 6 prodotti.
+    const comparisonLimit = 2;
 
     if (isSelected) {
         setSelectedList(selectedList.filter(product => product.id !== id));

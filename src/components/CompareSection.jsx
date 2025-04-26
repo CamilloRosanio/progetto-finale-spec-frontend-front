@@ -1,4 +1,5 @@
 // COMPONENTS
+import RoundButton from "./RoundButton";
 import CompareCard from "./ComparedCard";
 
 
@@ -12,7 +13,7 @@ export default function CompareSection({
         <div className="compareSection">
             <div className="cardHeader">
                 <h2>Your comparison</h2>
-                <div onClick={close} className="roundButton">✖</div>
+                <RoundButton onClick={close} />
             </div>
 
             <div className="comparedCardsContainer">

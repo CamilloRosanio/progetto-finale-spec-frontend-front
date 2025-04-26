@@ -6,6 +6,10 @@ import { handleSelection } from '../assets/utilityFunctions';
 import { useMainContext } from "../contexts/MainContext";
 
 
+// COMPONENTS
+import RoundButton from './RoundButton';
+
+
 // COMPONENT EXPORT
 export default function CompareCard({
     item,
@@ -25,8 +29,8 @@ export default function CompareCard({
 
         <div className="comparedCard">
             <div className="flex">
+                <RoundButton onClick={() => handleSelection(products, toCompare, setToCompare, item.id)} />
                 <h3>{item.title}</h3>
-                <p className="warning" onClick={() => handleSelection(products, toCompare, setToCompare, item.id)}><strong>✖</strong></p>
             </div>
 
             <h4 className="pCategory">{item.category}</h4>
