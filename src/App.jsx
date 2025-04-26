@@ -15,6 +15,7 @@ import HomePage from './pages/HomePage';
 import DetailsPage from './pages/DetailsPage';
 import FavoritesPage from './pages/FavoritesPage';
 import NotFoundPage from './pages/NotFoundPage';
+import AddProductPage from './pages/AddProductPage';
 
 
 // COMPONENT EXPORT
@@ -36,6 +37,7 @@ function App() {
               <Route index Component={HomePage}></Route>
               <Route path='/favorites' Component={FavoritesPage}></Route>
               <Route path='/details/:id' Component={DetailsPage}></Route>
+              <Route path='/add' Component={AddProductPage}></Route>
 
               {/* NOT FOUND PAGE */}
               <Route path='*' Component={NotFoundPage}></Route>

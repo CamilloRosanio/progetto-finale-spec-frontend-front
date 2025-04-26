@@ -21,6 +21,7 @@ export default function Navbar() {
             <div className="navbarLinks">
                 <NavLink to="/" className={({ isActive }) => isActive ? "navlink active" : "navlink"}>Home</NavLink>
                 <NavLink to="/favorites" className={({ isActive }) => isActive ? "navlink active" : "navlink"}>❤ Favorites</NavLink>
+                <NavLink to="/add" className={({ isActive }) => isActive ? "navlink active" : "navlink"}>✚ Add Product</NavLink>
             </div>
         </div>
 

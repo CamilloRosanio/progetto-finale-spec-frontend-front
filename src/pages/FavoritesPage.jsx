@@ -79,7 +79,7 @@ export default function FavoritesPage() {
 
     return <>
 
-        <h1>My Favorites</h1>
+        <h1>❤ My Favorites</h1>
 
         {/* FILTERS */}
         <div className="filtersContainer">
@@ -101,7 +101,7 @@ export default function FavoritesPage() {
 
         {/*  SORT */}
         <div className="sortSection">
-            <h2>⯀ {favorites.length} favorites in your list{favorites.length === sortedFavorites.length ? '' : ` ⯀ ${sortedFavorites.length} shown`}</h2>
+            <h2>⯀ {favorites.length} favorites in your list{favorites.length === sortedFavorites.length ? '' : ` ⯀ ${sortedFavorites.length} matches`}</h2>
 
             {sortedFavorites.length > 0 &&
                 <div className="sortButtonsContainer">
