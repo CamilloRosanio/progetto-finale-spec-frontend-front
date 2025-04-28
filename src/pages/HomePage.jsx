@@ -117,7 +117,7 @@ export default function HomePage() {
 
                 <div
                     className="toggle-container"
-                    onClick={() => { onOff(compareMode, setCompareMode); }}
+                    onClick={() => onOff(compareMode, setCompareMode)}
                 >
                     <div className={`toggle ${compareMode ? 'active' : ''}`}></div>
                 </div>

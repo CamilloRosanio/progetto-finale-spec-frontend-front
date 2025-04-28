@@ -35,9 +35,9 @@ function App() {
 
               {/* PAGES */}
               <Route index Component={HomePage}></Route>
-              <Route path='/favorites' Component={FavoritesPage}></Route>
               <Route path='/details/:id' Component={DetailsPage}></Route>
               <Route path='/add' Component={AddProductPage}></Route>
+              <Route path='/favorites' Component={FavoritesPage}></Route>
 
               {/* NOT FOUND PAGE */}
               <Route path='*' Component={NotFoundPage}></Route>

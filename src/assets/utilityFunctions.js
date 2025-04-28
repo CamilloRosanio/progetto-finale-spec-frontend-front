@@ -20,7 +20,7 @@ async function fetchProducts(urlRoot, urlAdd) {
     try {
         products = await fetchJson(urlRoot, urlAdd);
     } catch (error) {
-        throw new Error('FETCH(products) [ INDEX ] fetch failed.')
+        throw new Error('FETCH [ INDEX ] fetch failed.')
     }
     return products;
 }
@@ -41,6 +41,28 @@ async function fetchDeleteProduct(urlRoot, urlAdd, id) {
         console.error(error);
     }
 }
+
+// UPDATE
+async function updateProduct(urlRoot, urlAdd, id, itemToUpdate) {
+    try {
+        const response = await fetch(`${urlRoot}${urlAdd}${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(itemToUpdate)
+        });
+
+        if (!response.ok) {
+            throw new Error(`FETCH [ UPDATE  ] ${urlAdd}${id} failed`);
+        }
+
+        const data = await response.json();
+        console.log('Product succesfully updated:', data);
+    } catch (error) {
+        console.error(error);
+    }
+};
 
 // ADD
 async function addProduct(urlRoot, urlAdd, itemToAdd) {
@@ -148,14 +170,15 @@ function onOff(value, setValue) {
 // EXPORT
 export {
     fetchJson,
-    fetchDeleteProduct,
     fetchProducts,
+    addProduct,
+    updateProduct,
+    fetchDeleteProduct,
+    refreshProducts,
     handleSort,
     debounce,
     handleFavorite,
     onOff,
     handleSelection,
     getUniquesByKey,
-    refreshProducts,
-    addProduct,
 };
