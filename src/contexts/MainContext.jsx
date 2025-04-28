@@ -14,7 +14,7 @@ const MainContext = createContext();
 // PROVIDER EXPORT
 export const MainContextProvider = ({ children }) => {
 
-    // USE-STATE DATA
+    // USE-STATE
     const [products, setProducts] = useState([]);
     const [favorites, setFavorites] = useState([]);
     const [compareMode, setCompareMode] = useState(false);
@@ -28,7 +28,7 @@ export const MainContextProvider = ({ children }) => {
                 // console.log('PRODUCT EXAMPLE: ', products[0]);
                 setProducts(products);
             })
-            .catch(error => console.error(error))
+            .catch(error => console.error(error));
     }, []);
 
     // INIT USE-EFFECT - GET STORED FAVORITES

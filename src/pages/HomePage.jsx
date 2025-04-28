@@ -12,6 +12,10 @@ import {
 } from '../assets/utilityFunctions';
 
 
+// ENV
+const { VITE_API_URL } = import.meta.env;
+
+
 // CONTEXTS
 import { useMainContext } from "../contexts/MainContext";
 
@@ -185,7 +189,13 @@ export default function HomePage() {
                 confirm={async () => {
                     await fetchDeleteProduct(VITE_API_URL, '/products/', deleteId);
                     setDeleteId('');
+
+                    // Versione sincronizzata con il Server
                     await refreshProducts(VITE_API_URL, '/products/', setProducts);
+
+                    // Versione "leggera" con solo filtraggio dell'Array di Products
+                    setProducts(products.filter(p => p.id !== deleteId))
+
                     setShowModal(false);
                 }}
                 close={() => setShowModal(false)}

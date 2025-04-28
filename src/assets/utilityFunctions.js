@@ -2,13 +2,19 @@
 # FETCH
 *******************************************************************/
 
-// SUPPORT FUNCTION
+// SUPPORT FUNCTIONS
+
 async function fetchJson(urlRoot, urlAdd) {
     const response = await fetch(`${urlRoot}${urlAdd}`);
     const object = await response.json();
     return object;
 }
 
+async function refreshProducts(urlRoot, urlAdd, setState) {
+    setState(await fetchProducts(urlRoot, urlAdd));
+}
+
+// INDEX
 async function fetchProducts(urlRoot, urlAdd) {
     let products;
     try {
@@ -19,8 +25,8 @@ async function fetchProducts(urlRoot, urlAdd) {
     return products;
 }
 
+// DELETE
 async function fetchDeleteProduct(urlRoot, urlAdd, id) {
-
     try {
         const response = await fetch(`${urlRoot}${urlAdd}${id}`, {
             method: 'DELETE',
@@ -29,7 +35,6 @@ async function fetchDeleteProduct(urlRoot, urlAdd, id) {
         if (!response.ok) {
             throw new Error(`FETCH [ DELETE ${urlAdd}${id} ] failed.`)
         }
-
         // debug
         // console.log(`FETCH [ DELETE ${urlAdd}${id} ] Item with ID ${id} successfully deleted. \nSTATUS: ${response.status}`);
     } catch (error) {
@@ -37,9 +42,28 @@ async function fetchDeleteProduct(urlRoot, urlAdd, id) {
     }
 }
 
-async function refreshProducts(urlRoot, urlAdd, setState) {
-    setState(await fetchProducts(urlRoot, urlAdd));
-}
+// ADD
+async function addProduct(urlRoot, urlAdd, itemToAdd) {
+    try {
+        const response = await fetch(`${urlRoot}${urlAdd}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(itemToAdd)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error in the POST request: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log('Product succesfully added:', data);
+    } catch (error) {
+        console.error('Error while adding product:', error);
+    }
+};
+
 
 
 /*******************************************************************
@@ -88,7 +112,6 @@ function handleFavorite(list, favorites, setFavorites, id) {
     } else if (!isFavorite) {
         setFavorites([...favorites, productToAdd]);
     }
-
     // debug
     // console.log('FAVORITES:', favorites);
 };
@@ -108,7 +131,6 @@ function handleSelection(list, selectedList, setSelectedList, id) {
             setSelectedList([...selectedList, productToAdd]);
         }
     }
-
     // debug
     // console.log('COMPARE:', selectedList);
 };
@@ -135,4 +157,5 @@ export {
     handleSelection,
     getUniquesByKey,
     refreshProducts,
+    addProduct,
 };
