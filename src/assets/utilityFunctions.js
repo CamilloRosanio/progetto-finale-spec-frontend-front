@@ -14,7 +14,7 @@ async function refreshProducts(urlRoot, urlAdd, setState) {
     setState(await fetchProducts(urlRoot, urlAdd));
 }
 
-// INDEX
+// INDEX PRODUCTS
 async function fetchProducts(urlRoot, urlAdd) {
     let products;
     try {
@@ -25,7 +25,7 @@ async function fetchProducts(urlRoot, urlAdd) {
     return products;
 }
 
-// DELETE
+// DELETE PRODUCT
 async function fetchDeleteProduct(urlRoot, urlAdd, id) {
     try {
         const response = await fetch(`${urlRoot}${urlAdd}${id}`, {
@@ -42,7 +42,7 @@ async function fetchDeleteProduct(urlRoot, urlAdd, id) {
     }
 }
 
-// UPDATE
+// UPDATE PRODUCT
 async function updateProduct(urlRoot, urlAdd, id, itemToUpdate) {
     try {
         const response = await fetch(`${urlRoot}${urlAdd}${id}`, {
@@ -64,7 +64,7 @@ async function updateProduct(urlRoot, urlAdd, id, itemToUpdate) {
     }
 };
 
-// ADD
+// ADD PRODUCT
 async function addProduct(urlRoot, urlAdd, itemToAdd) {
     try {
         const response = await fetch(`${urlRoot}${urlAdd}`, {
