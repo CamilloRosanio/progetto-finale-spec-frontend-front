@@ -104,10 +104,10 @@ export default function DetailsPage() {
         // }
 
         // FIELDS VALIDATION
-        if (toUpdateItem.title && toUpdateItem.title < stringMin) {
+        if (toUpdateItem.title && toUpdateItem.title.length < stringMin) {
             return setFormErrorMessage(`Title can't be empty or with less than ${stringMin} characters.`);
         }
-        if (toUpdateItem.category && (toUpdateItem.category < stringMin || toUpdateItem.category.includes('@'))) {
+        if (toUpdateItem.category && (toUpdateItem.category.length < stringMin || toUpdateItem.category.includes('@'))) {
             return setFormErrorMessage(`Category can't contain special character, be empty or less than ${stringMin} characters long.`);
         }
         if (toUpdateItem.price && (isNaN(toUpdateItem.price) || toUpdateItem.price > 1000000)) {

@@ -63,22 +63,25 @@ export default function AddProductPage() {
         const toAddItem = {
             title: refTitle.current.value,
             category: category,
-            brand: refBrand.current.value || '',
+            brand: refBrand.current.value,
             price: parseFloat(price),
             status: refStatus.current.value,
         }
 
         const stringMin = 3;
 
+        // debug
+        console.log('TITLE:', refTitle.current.value);
+
         // FIELDS VALIDATION
-        if (toAddItem.title === '' || toAddItem.title < stringMin) {
-            return setFormErrorMessage(`Title can't be empty or with less than ${stringMin} characters.`);
+        if (toAddItem.title === '' || toAddItem.title.length < stringMin) {
+            return setFormErrorMessage(`Title can't be empty or less than ${stringMin} characters long.`);
         }
         if (products.some(item => item.title === toAddItem.title)) {
             return setFormErrorMessage(`Product with this title already exists. Change title to proceed.`);
         }
-        if (toAddItem.category === '' || toAddItem.category < stringMin || toAddItem.category.includes('@')) {
-            return setFormErrorMessage(`Category can't contain special character, be empty or less than ${stringMin} characters long.`);
+        if (toAddItem.category === '' || toAddItem.category.length < stringMin || toAddItem.category.includes('@')) {
+            return setFormErrorMessage(`Category can't contain special characters, be empty or less than ${stringMin} characters long.`);
         }
         if (!toAddItem.price || isNaN(toAddItem.price) || toAddItem.price > 1000000) {
             return setFormErrorMessage(`Price must be a number and can't be empty or greater than 1.000.000.`);
