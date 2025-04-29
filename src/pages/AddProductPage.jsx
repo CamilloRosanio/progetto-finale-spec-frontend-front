@@ -62,7 +62,7 @@ export default function AddProductPage() {
         // SUPPORT
         const toAddItem = {
             title: refTitle.current.value,
-            category: category,
+            category: category.toLowerCase(),
             brand: refBrand.current.value,
             price: parseFloat(price),
             status: refStatus.current.value,

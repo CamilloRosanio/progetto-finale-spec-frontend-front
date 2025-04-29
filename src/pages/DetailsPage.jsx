@@ -81,7 +81,7 @@ export default function DetailsPage() {
 
         const toUpdateItem = {
             title: refTitle.current.value || currentItem.title,
-            category: category || currentItem.category,
+            category: category.toLowerCase() || currentItem.category,
             brand: refBrand.current.value || currentItem.brand,
             price: parseFloat(price) || parseFloat(currentItem.price),
             status: refStatus.current.value || currentItem.status,

@@ -39,7 +39,7 @@ function ProductCard({
 
             <div className="flex" onClick={onClick}>
                 <div className="infoSection" >
-                    <h4 className="pCategory">{category}</h4>
+                    <h4 className="pCategory">{category.toLowerCase()}</h4>
                     <h3>{title}</h3>
                     {brand && <p className="pBrand">by {brand}</p>}
                     {quantity > 0 && <p>in stock: <strong>{quantity}</strong></p>}
