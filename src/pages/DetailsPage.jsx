@@ -53,11 +53,13 @@ export default function DetailsPage() {
     }, [products, id]);
 
     // SUPPORT
+    const currentItem = products.find(item => String(item.id) === String(id));
+
     const statuses = ['available', 'not available'];
 
     function resetForm() {
         refTitle.current.value = '';
-        setCategory('')
+        setCategory('');
         refBrand.current.value = '';
         setPrice('');
         refStatus.current.value = '';
@@ -77,29 +79,39 @@ export default function DetailsPage() {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        // SUPPORT
         const toUpdateItem = {
-            title: refTitle.current.value,
-            category: category,
-            brand: refBrand.current.value || '',
-            price: parseFloat(price),
-            status: refStatus.current.value,
+            title: refTitle.current.value || currentItem.title,
+            category: category || currentItem.category,
+            brand: refBrand.current.value || currentItem.brand,
+            price: parseFloat(price) || parseFloat(currentItem.price),
+            status: refStatus.current.value || currentItem.status,
         }
 
         const stringMin = 3;
 
         // FIELDS VALIDATION
-        if (toUpdateItem.title === '' || toUpdateItem.title < stringMin) {
+        // if (toUpdateItem.title === '' || toUpdateItem.title < stringMin) {
+        //     return setFormErrorMessage(`Title can't be empty or with less than ${stringMin} characters.`);
+        // }
+        // if (toUpdateItem.category === '' || toUpdateItem.category < stringMin || toUpdateItem.category.includes('@')) {
+        //     return setFormErrorMessage(`Category can't contain special character, be empty or less than ${stringMin} characters long.`);
+        // }
+        // if (!toUpdateItem.price || isNaN(toUpdateItem.price) || toUpdateItem.price > 1000000) {
+        //     return setFormErrorMessage(`Price must be a number and can't be empty or greater than 1.000.000.`);
+        // }
+        // if (!toUpdateItem.status) {
+        //     return setFormErrorMessage(`You must chose a Status to proceed.`);
+        // }
+
+        // FIELDS VALIDATION
+        if (toUpdateItem.title && toUpdateItem.title < stringMin) {
             return setFormErrorMessage(`Title can't be empty or with less than ${stringMin} characters.`);
         }
-        if (toUpdateItem.category === '' || toUpdateItem.category < stringMin || toUpdateItem.category.includes('@')) {
+        if (toUpdateItem.category && (toUpdateItem.category < stringMin || toUpdateItem.category.includes('@'))) {
             return setFormErrorMessage(`Category can't contain special character, be empty or less than ${stringMin} characters long.`);
         }
-        if (!toUpdateItem.price || isNaN(toUpdateItem.price) || toUpdateItem.price > 1000000) {
+        if (toUpdateItem.price && (isNaN(toUpdateItem.price) || toUpdateItem.price > 1000000)) {
             return setFormErrorMessage(`Price must be a number and can't be empty or greater than 1.000.000.`);
-        }
-        if (!toUpdateItem.status) {
-            return setFormErrorMessage(`You must chose a Status to proceed.`);
         }
 
         // FETCH
