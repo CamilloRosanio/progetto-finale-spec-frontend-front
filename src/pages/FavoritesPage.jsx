@@ -101,7 +101,7 @@ export default function FavoritesPage() {
 
         {/*  SORT */}
         <div className="sortSection">
-            <h2>⯀ {favorites.length} favorites in your list{favorites.length === sortedFavorites.length ? '' : ` ⯀ ${sortedFavorites.length} filtered matches`}</h2>
+            <h2>⯀ {favorites.length} favorites in your list{favorites.length === sortedFavorites.length ? '' : ` ⯀ ${sortedFavorites.length} filtered products`}</h2>
 
             {sortedFavorites.length > 0 &&
                 <div className="sortButtonsContainer">

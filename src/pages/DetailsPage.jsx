@@ -92,9 +92,6 @@ export default function DetailsPage() {
         if (toUpdateItem.title === '' || toUpdateItem.title < stringMin) {
             return setFormErrorMessage(`Title can't be empty or with less than ${stringMin} characters.`);
         }
-        if (products.some(item => item.title === toUpdateItem.title)) {
-            return setFormErrorMessage(`Product with this title already exists. Change title to proceed.`);
-        }
         if (toUpdateItem.category === '' || toUpdateItem.category < stringMin || toUpdateItem.category.includes('@')) {
             return setFormErrorMessage(`Category can't contain special character, be empty or less than ${stringMin} characters long.`);
         }
