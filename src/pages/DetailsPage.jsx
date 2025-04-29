@@ -129,7 +129,7 @@ export default function DetailsPage() {
 
         // RESET FORM
         resetForm();
-        setEditMode(false);
+        // setEditMode(false);
     }
 
     // COMPONENT EXPORT
