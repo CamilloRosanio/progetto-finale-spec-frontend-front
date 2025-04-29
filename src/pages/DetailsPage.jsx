@@ -104,6 +104,9 @@ export default function DetailsPage() {
         // }
 
         // FIELDS VALIDATION
+        if (!refTitle.current.value && !category && !refBrand.current.value && !price && !refStatus.current.value) {
+            return setFormErrorMessage(`All fields are empty. Set at least one field to proceed.`);
+        }
         if (toUpdateItem.title && toUpdateItem.title.length < stringMin) {
             return setFormErrorMessage(`Title can't be empty or with less than ${stringMin} characters.`);
         }

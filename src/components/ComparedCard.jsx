@@ -27,7 +27,7 @@ export default function CompareCard({
 
     return <>
 
-        <div className="comparedCard">
+        <div className={`comparedCard ${item.price === bestPrice && 'bestValue'}`}>
             <div className="flex">
                 <RoundButton onClick={() => handleSelection(products, toCompare, setToCompare, item.id)} />
                 <h3>{item.title}</h3>
