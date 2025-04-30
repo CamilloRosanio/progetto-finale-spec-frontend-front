@@ -93,7 +93,7 @@ export default function HomePage() {
         <div className="filtersContainer">
 
             <Searchbar
-                placeholder="🔍 Search by name.."
+                placeholder="🔍 Search by Title.."
                 onDebouncedChange={setQuery}
                 reset={setQuery}
             />
