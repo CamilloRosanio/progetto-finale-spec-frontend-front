@@ -1,5 +1,6 @@
 // UTILITY
 import { handleSelection } from '../assets/utilityFunctions';
+import { memo } from "react";
 
 
 // CONTEXTS
@@ -10,8 +11,8 @@ import { useMainContext } from "../contexts/MainContext";
 import RoundButton from './RoundButton';
 
 
-// COMPONENT EXPORT
-export default function CompareCard({
+// COMPONENT STRUCTURE
+function CompareCard({
     item,
 }) {
 
@@ -47,3 +48,7 @@ export default function CompareCard({
 
     </>
 }
+
+
+// EXPORT MEMO COMPONENT
+export default memo(CompareCard);
