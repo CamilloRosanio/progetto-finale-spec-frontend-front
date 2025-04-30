@@ -400,7 +400,7 @@ form .selectContainer {
 .toggle {
   position: relative;
   width: 60px;
-  height: 29px;
+  height: 30px;
   border: 2px solid var(--color-3);
   border-radius: 30px;
   cursor: pointer;
@@ -416,8 +416,8 @@ form .selectContainer {
   position: absolute;
   top: 4px;
   left: 4px;
-  width: 19px;
-  height: 19px;
+  width: 18px;
+  height: 18px;
   background-color: var(--color-3);
   border-radius: 50%;
   transition: transform 0.3s ease, background-color 0.3s ease;
