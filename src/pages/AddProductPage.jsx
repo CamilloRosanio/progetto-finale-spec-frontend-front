@@ -77,7 +77,7 @@ export default function AddProductPage() {
         if (toAddItem.title === '' || toAddItem.title.length < stringMin) {
             return setFormErrorMessage(`Title can't be empty or less than ${stringMin} characters long.`);
         }
-        if (products.some(item => item.title === toAddItem.title)) {
+        if (products.some(item => item.title.toLowerCase() === toAddItem.title.toLowerCase())) {
             return setFormErrorMessage(`Product with this title already exists. Change title to proceed.`);
         }
         if (toAddItem.category === '' || toAddItem.category.length < stringMin || toAddItem.category.includes('@')) {
