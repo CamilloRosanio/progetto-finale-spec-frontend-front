@@ -107,7 +107,7 @@ export default function DetailsPage() {
         if (!refTitle.current.value && !category && !refBrand.current.value && !price && !refStatus.current.value) {
             return setFormErrorMessage(`All fields are empty. Set at least one field to proceed.`);
         }
-        if (products.some(p => refTitle.current.value === p.title)) {
+        if (products.some(p => refTitle.current.value.toLowerCase() === p.title.toLowerCase())) {
             return setFormErrorMessage(`Product with this title already exists. Change title to proceed.`);
         }
         if (toUpdateItem.title && toUpdateItem.title.length < stringMin) {
