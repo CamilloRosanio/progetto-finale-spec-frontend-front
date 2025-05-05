@@ -107,6 +107,9 @@ export default function DetailsPage() {
         if (!refTitle.current.value && !category && !refBrand.current.value && !price && !refStatus.current.value) {
             return setFormErrorMessage(`All fields are empty. Set at least one field to proceed.`);
         }
+        if (products.some(p => refTitle.current.value === p.title)) {
+            return setFormErrorMessage(`Product with this title already exists. Change title to proceed.`);
+        }
         if (toUpdateItem.title && toUpdateItem.title.length < stringMin) {
             return setFormErrorMessage(`Title can't be empty or with less than ${stringMin} characters.`);
         }
@@ -154,7 +157,7 @@ export default function DetailsPage() {
                     {selectedProduct.status === 'not available' ? <p className="notAvailable">{selectedProduct.status} ●</p> : <p>{selectedProduct.status} ●</p>}
                 </div>
 
-                {/* COMPARE MODE */}
+                {/* EDIT FORM */}
                 <div className="flex">
                     <h2><strong>EDIT PRODUCT</strong></h2>
                     <div
