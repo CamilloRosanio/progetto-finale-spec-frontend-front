@@ -13,9 +13,9 @@ import Layout from './layouts/Layout';
 // PAGES
 import HomePage from './pages/HomePage';
 import DetailsPage from './pages/DetailsPage';
+import AddProductPage from './pages/AddProductPage';
 import FavoritesPage from './pages/FavoritesPage';
 import NotFoundPage from './pages/NotFoundPage';
-import AddProductPage from './pages/AddProductPage';
 
 
 // COMPONENT EXPORT

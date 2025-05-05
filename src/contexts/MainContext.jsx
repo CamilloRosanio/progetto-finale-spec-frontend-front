@@ -16,9 +16,12 @@ export const MainContextProvider = ({ children }) => {
 
     // USE-STATE
     const [products, setProducts] = useState([]);
-    const [favorites, setFavorites] = useState([]);
     const [compareMode, setCompareMode] = useState(false);
     const [toCompare, setToCompare] = useState([]);
+    const [favorites, setFavorites] = useState(() => {
+        const stored = localStorage.getItem('favorites');
+        return stored ? JSON.parse(stored) : [];
+    });
 
     // INIT USE-EFFECT - FETCH
     useEffect(() => {
@@ -45,7 +48,7 @@ export const MainContextProvider = ({ children }) => {
     // USE-EFFECT - UPDATE STORED FAVORITES
     useEffect(() => {
         // NOTA: funziona in combinazione con la funzione "handleFavorite" che si trova in "utilityFunctions".
-        if (favorites && favorites.length > 0) {
+        if (favorites) {
             localStorage.setItem('favorites', JSON.stringify(favorites));
         }
     }, [favorites]);

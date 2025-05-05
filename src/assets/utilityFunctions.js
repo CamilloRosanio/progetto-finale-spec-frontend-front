@@ -20,7 +20,7 @@ async function fetchProducts(urlRoot, urlAdd) {
     try {
         products = await fetchJson(urlRoot, urlAdd);
     } catch (error) {
-        throw new Error('FETCH [ INDEX ] fetch failed.')
+        console.error(error);
     }
     return products;
 }
@@ -31,7 +31,6 @@ async function fetchDeleteProduct(urlRoot, urlAdd, id) {
         const response = await fetch(`${urlRoot}${urlAdd}${id}`, {
             method: 'DELETE',
         });
-
         if (!response.ok) {
             throw new Error(`FETCH [ DELETE ${urlAdd}${id} ] failed.`)
         }
@@ -52,7 +51,6 @@ async function updateProduct(urlRoot, urlAdd, id, itemToUpdate) {
             },
             body: JSON.stringify(itemToUpdate)
         });
-
         if (!response.ok) {
             throw new Error(`FETCH [ UPDATE  ] ${urlAdd}${id} failed`);
         }

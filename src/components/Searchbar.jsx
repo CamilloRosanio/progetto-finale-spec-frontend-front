@@ -15,8 +15,8 @@ export default function Searchbar({ placeholder, onDebouncedChange, reset }) {
 
     // USE-CALLBACK
     const debouncedChange = useCallback(
-        debounce((query) => {
-            onDebouncedChange(query);
+        debounce((localValue) => {
+            onDebouncedChange(localValue);
         }, 500),
         [onDebouncedChange]
     );
